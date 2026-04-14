@@ -1,7 +1,7 @@
 import json
 
-file = open("recipes/recipes_raw_nosource_fn.json", "r")
+file = open("recipes/recipes.json", "r")
 data = json.load(file)
 file.close()
 
-print(data)
+print(data["1"])
