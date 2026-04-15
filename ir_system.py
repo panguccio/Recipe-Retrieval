@@ -29,16 +29,15 @@ corpus = create_recipe_corpus("recipes/recipes.json")
 
 def get_wordnet_pos(treebank_tag):
     if treebank_tag.startswith('J'):
-        return 'a'  # Adjective
+        return 'a'
     elif treebank_tag.startswith('V'):
-        return 'v'  # Verb
+        return 'v'
     elif treebank_tag.startswith('N'):
-        return 'n'  # Noun
+        return 'n'
     elif treebank_tag.startswith('R'):
-        return 'r'  # Adverb
+        return 'r'
     else:
-        return 'n'  # Default to noun
-
+        return 'n'
 
 def normalize(text):
     norm_text = re.sub(r'-', ' ', text)
@@ -50,9 +49,8 @@ def normalize(text):
 def tokenize(recipe):
     title_list = normalize(recipe.title)
     instruction_list = normalize(recipe.instructions)
-    return title_list
+    return instruction_list
 
-#print([tokenize(corpus[i]) for i in range(15)])
-tuples = pos_tag(tokenize(corpus[0]))
+tuples = pos_tag(tokenize(corpus[1]))
 for word, pos in tuples:
     print(wnl().lemmatize(word, get_wordnet_pos(pos)))
