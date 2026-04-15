@@ -1,6 +1,15 @@
 import json
 import re
+import nltk
+from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer as wnl
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger_eng')
+
+
+
+
+
 
 class Recipe: 
     def __init__(self, title, ingredients, instructions):
@@ -23,9 +32,6 @@ def create_recipe_corpus(filename):
     return recipe_corpus
 
 corpus = create_recipe_corpus("recipes/recipes.json")
-for i in range(len(corpus)):
-    print(f"{i} -> {corpus[i]}")
-
 def normalize(text):
     norm_text = re.sub(r'-', ' ', text)
     norm_text = re.sub(r'[^a-zA-Z\s]', '', norm_text)
@@ -38,4 +44,9 @@ def tokenize(recipe):
     instruction_list = normalize(recipe.instructions)
     return title_list
 
-print(tokenize(corpus[0]))
+#print([tokenize(corpus[i]) for i in range(15)])
+tuples = pos_tag(tokenize(corpus[0]))
+for word, pos in tuples:
+    print(wnl().lemmatize(word, pos.lower()))
+
+
