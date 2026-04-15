@@ -1,6 +1,6 @@
 import json
 import re
-
+from nltk.stem import WordNetLemmatizer as wnl
 
 class Recipe: 
     def __init__(self, title, ingredients, instructions):
@@ -17,7 +17,7 @@ def create_recipe_corpus(filename):
     recipe_corpus = []
     for index in data:
         recipe_json = data[index]
-        ingredients, instructions, title = recipe_json['ingredients'], recipe_json['instructions'], recipe_json['title']
+        ingredients, instructions, title = recipe_json["ingredients"], recipe_json["instructions"], recipe_json["title"]
         if recipe_json and ingredients and instructions and title:
             recipe_corpus.append(Recipe(title, ingredients, instructions))
     file.close()
@@ -31,10 +31,12 @@ def normalize(text):
     norm_text = re.sub(r'-', ' ', text)
     norm_text = re.sub(r'[^a-zA-Z\s]', '', norm_text)
     norm_text = norm_text.lower()
-    return list(norm_text.split())
+    word_list = [wnl().lemmatize(word) for word in norm_text.split()]
+    return word_list
 
 def tokenize(recipe):
     title_list = normalize(recipe.title)
     instruction_list = normalize(recipe.instructions)
     return title_list
 
+print (tokenize(corpus[0]))
