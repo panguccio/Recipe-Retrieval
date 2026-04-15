@@ -17,9 +17,9 @@ def create_recipe_corpus(filename):
     recipe_corpus = []
     for index in data:
         recipe_json = data[index]
-        ingredients, instructions, title = recipe_json['ingredients'], recipe_json['instructions'], recipe_json['title']
-        if recipe_json and ingredients and instructions and title:
-            recipe_corpus.append(Recipe(title, ingredients, instructions))
+        print(recipe_json)
+        if recipe_json and recipe_json.get('ingredients') and recipe_json.get('instructions') and recipe_json.get('title'):
+            recipe_corpus.append(Recipe(recipe_json["title"], recipe_json["ingredients"], recipe_json["instructions"]))
     file.close()
     return recipe_corpus
 
@@ -38,3 +38,4 @@ def tokenize(recipe):
     instruction_list = normalize(recipe.instructions)
     return title_list
 
+print(tokenize(corpus[0]))
