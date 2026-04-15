@@ -6,11 +6,6 @@ from nltk.stem import WordNetLemmatizer as wnl
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger_eng')
 
-
-
-
-
-
 class Recipe: 
     def __init__(self, title, ingredients, instructions):
         self.title = title
@@ -18,7 +13,6 @@ class Recipe:
         self.instructions = instructions
     def __repr__(self):
         return self.title
-
 
 def create_recipe_corpus(filename):
     file = open(filename, "r")
@@ -32,6 +26,20 @@ def create_recipe_corpus(filename):
     return recipe_corpus
 
 corpus = create_recipe_corpus("recipes/recipes.json")
+
+def get_wordnet_pos(treebank_tag):
+    if treebank_tag.startswith('J'):
+        return 'a'  # Adjective
+    elif treebank_tag.startswith('V'):
+        return 'v'  # Verb
+    elif treebank_tag.startswith('N'):
+        return 'n'  # Noun
+    elif treebank_tag.startswith('R'):
+        return 'r'  # Adverb
+    else:
+        return 'n'  # Default to noun
+
+
 def normalize(text):
     norm_text = re.sub(r'-', ' ', text)
     norm_text = re.sub(r'[^a-zA-Z\s]', '', norm_text)
@@ -47,6 +55,4 @@ def tokenize(recipe):
 #print([tokenize(corpus[i]) for i in range(15)])
 tuples = pos_tag(tokenize(corpus[0]))
 for word, pos in tuples:
-    print(wnl().lemmatize(word, pos.lower()))
-
-
+    print(wnl().lemmatize(word, get_wordnet_pos(pos)))
