@@ -1,5 +1,7 @@
 import json
 import re
+from math import log
+
 import nltk
 from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer as wnl
@@ -7,6 +9,7 @@ from nltk.stem import WordNetLemmatizer as wnl
 # to do: maybe move these to a setup script or something
 nltk.download('wordnet', quiet=True)
 nltk.download('averaged_perceptron_tagger_eng', quiet=True)
+
 
 class Recipe:
     def __init__(self, id, title, ingredients, instructions):
@@ -76,6 +79,7 @@ class PostingList:
         else:
             return f"{self.list}"
 
+
 class InvertedIndex:
     def __init__(self, corpus):
         self.index = {}
@@ -93,8 +97,7 @@ class InvertedIndex:
                     self.index[term].add_occurrence(recipe.id)
         for term in self.index:
             posting_list = self.index[term]
-            term.update_idf(len(corpus)/len(posting_list))
-
+            term.update_idf(log(len(corpus) / len(posting_list)))
 
     def __repr__(self):
         return f"{[str(term) + '->' + str(self.index[term]) for term in self.index]}"
