@@ -3,6 +3,7 @@ import re
 import nltk
 from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer as wnl
+
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger_eng')
 
@@ -30,7 +31,22 @@ class Term:
         return self.word + '.' + self.position
 
     def __hash__(self):
-        return hash(self.word+self.position)
+        return hash(self.word + self.position)
+
+
+class Posting:
+    def __init__(self, doc_id):
+        self.doc_id = doc_id
+        self.tf = 0
+
+    def add_occurrence(self):
+        self.tf += 1
+
+    def __eq__(self, other):
+        return self.doc_id == other.doc_id
+
+    def __repr__(self):
+        return f"{self.doc_id}, {self.tf}"
 
 
 class PostingList:
@@ -38,15 +54,20 @@ class PostingList:
         self.list = []
 
     # we will ignore tf, because we are cooked
-    def add_occurence(self, doc_id):
-        if doc_id not in self.list:
-            self.list.append(doc_id)
+    def add_occurrence(self, doc_id):
+        posting = Posting(doc_id)
+        if posting not in self.list:
+            self.list.append(posting)
+        for p in self.list:
+            if p == posting:
+                p.add_occurrence()
 
     def __repr__(self):
         if len(self.list) == 0:
             return "[]"
         else:
             return f"{[self.list]}"
+
 
 class InvertedIndex:
     def __init__(self, corpus):
@@ -60,7 +81,7 @@ class InvertedIndex:
                 term = Term(title_token, "title")
                 if term not in self.index:
                     self.index[term] = PostingList()
-                self.index[term].add_occurence(recipe.id)
+                self.index[term].add_occurrence(recipe.id)
 
     def __repr__(self):
         return f"{[str(term) + '->' + str(self.index[term]) for term in self.index]}"
@@ -73,7 +94,8 @@ def create_recipe_corpus(filename):
     id = 1
     for index in data:
         recipe_json = data[index]
-        if recipe_json and recipe_json.get('ingredients') and recipe_json.get('instructions') and recipe_json.get('title'):
+        if recipe_json and recipe_json.get('ingredients') and recipe_json.get('instructions') and recipe_json.get(
+                'title'):
             recipe_corpus.append(Recipe(
                 id, recipe_json["title"], recipe_json["ingredients"], recipe_json["instructions"]))
             id += 1
@@ -102,6 +124,6 @@ def tokenize(text):
     return word_list
 
 
-corpus = create_recipe_corpus("recipes/recipes.json")
+corpus = create_recipe_corpus("recipes/test.json")
 idx = InvertedIndex(corpus)
 print(idx)
