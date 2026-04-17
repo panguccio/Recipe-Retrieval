@@ -7,7 +7,6 @@ from nltk.stem import WordNetLemmatizer as wnl
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger_eng')
 
-
 class Recipe:
     def __init__(self, id, title, ingredients, instructions):
         self.id = id
@@ -23,12 +22,16 @@ class Term:
     def __init__(self, word, position):
         self.word = word
         self.position = position
+        self.idf = 0
+
+    def update_idf(self, idf):
+        self.idf = idf
 
     def __eq__(self, other):
-        return (self.word == other.word and self.position == other.position)
+        return self.word == other.word and self.position == other.position
 
     def __repr__(self):
-        return self.word + '.' + self.position
+        return f"{self.word}.{self.position} (idf:{self.idf})"
 
     def __hash__(self):
         return hash(self.word + self.position)
@@ -63,12 +66,14 @@ class PostingList:
     def list(self):
         return list(self._map.values())
 
+    def __len__(self):
+        return len(self._map)
+
     def __repr__(self):
         if len(self.list) == 0:
             return "[]"
         else:
             return f"{self.list}"
-
 
 class InvertedIndex:
     def __init__(self, corpus):
@@ -77,12 +82,15 @@ class InvertedIndex:
 
     def populate_index(self, corpus):
         for recipe in corpus:
-
             for title_token in tokenize(recipe.title):
                 term = Term(title_token, "title")
                 if term not in self.index:
                     self.index[term] = PostingList()
                 self.index[term].add_occurrence(recipe.id)
+        for term in self.index:
+            posting_list = self.index[term]
+            term.update_idf(len(corpus)/len(posting_list))
+
 
     def __repr__(self):
         return f"{[str(term) + '->' + str(self.index[term]) for term in self.index]}"
@@ -92,14 +100,14 @@ def create_recipe_corpus(filename):
     file = open(filename, "r")
     data = json.load(file)
     recipe_corpus = []
-    id = 1
+    doc_id = 1
     for index in data:
         recipe_json = data[index]
         if recipe_json and recipe_json.get('ingredients') and recipe_json.get('instructions') and recipe_json.get(
                 'title'):
             recipe_corpus.append(Recipe(
-                id, recipe_json["title"], recipe_json["ingredients"], recipe_json["instructions"]))
-            id += 1
+                doc_id, recipe_json["title"], recipe_json["ingredients"], recipe_json["instructions"]))
+            doc_id += 1
     file.close()
     return recipe_corpus
 
@@ -119,6 +127,7 @@ def get_wordnet_pos(treebank_tag):
 
 def tokenize(text):
     norm_text = re.sub(r'-', ' ', text)
+    # problem to fix: "'s" is not mapped to "be" for some reason
     norm_text = re.sub(r'[^a-zA-Z\s]', '', norm_text)
     norm_text = norm_text.lower()
     word_list = [wnl().lemmatize(word) for word in norm_text.split()]
