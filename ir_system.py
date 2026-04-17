@@ -83,7 +83,7 @@ class InvertedIndex:
 
     def populate_index(self, corpus):
         for recipe in corpus:
-            for title_token in tokenize(recipe.title):
+            for title_token in tokenize(recipe.instructions):
                 term = Term(title_token, "title")
                 if term not in self.index:
                     self.index[term] = PostingList()
@@ -113,7 +113,8 @@ def create_recipe_corpus(filename):
     return recipe_corpus
 
 
-def get_wordnet_pos(treebank_tag):
+def to_wnl_pos(treebank_tag):
+    # a map from nltk pos to wordnet pos
     if treebank_tag.startswith('J'):
         return 'a'
     elif treebank_tag.startswith('V'):
@@ -127,11 +128,19 @@ def get_wordnet_pos(treebank_tag):
 
 
 def tokenize(text):
+    # remove -
     norm_text = re.sub(r'-', ' ', text)
-    # problem to fix: "'s" is not mapped to "be" for some reason
+    # remove possessive 's
+    norm_text = re.sub(r'\'s', '', norm_text)
+    # keep just letters and spaces
     norm_text = re.sub(r'[^a-zA-Z\s]', '', norm_text)
+    # lower case text
     norm_text = norm_text.lower()
-    word_list = [wnl().lemmatize(word) for word in norm_text.split()]
+    # tag the words with part of speach
+    words_pos = pos_tag(norm_text.split())
+    # lemmatize with wordnet
+    word_list = [wnl().lemmatize(w, to_wnl_pos(p)) for w, p in words_pos]
+
     return word_list
 
 
