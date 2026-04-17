@@ -36,15 +36,17 @@ class Term:
 class PostingList:
     def __init__(self):
         self.list = []
-# we will ignore tf, because we are cooked
 
+    # we will ignore tf, because we are cooked
     def add_occurence(self, doc_id):
         if doc_id not in self.list:
             self.list.append(doc_id)
 
     def __repr__(self):
-        return [self.list[i] for i in self.list] if len(self.list) > 0 else '[]'
-
+        if len(self.list) == 0:
+            return "[]"
+        else:
+            return f"{[self.list]}"
 
 class InvertedIndex:
     def __init__(self, corpus):
@@ -61,7 +63,7 @@ class InvertedIndex:
                 self.index[term].add_occurence(recipe.id)
 
     def __repr__(self):
-        return [str(term) + '->' + str(self.index[term]) for term in self.index]
+        return f"{[str(term) + '->' + str(self.index[term]) for term in self.index]}"
 
 
 def create_recipe_corpus(filename):
