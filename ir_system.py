@@ -46,27 +46,28 @@ class Posting:
         return self.doc_id == other.doc_id
 
     def __repr__(self):
-        return f"{self.doc_id}, {self.tf}"
+        return f"(docid:{self.doc_id}, tf:{self.tf})"
 
 
 class PostingList:
     def __init__(self):
-        self.list = []
+        self._map = {}
 
     # we will ignore tf, because we are cooked
     def add_occurrence(self, doc_id):
-        posting = Posting(doc_id)
-        if posting not in self.list:
-            self.list.append(posting)
-        for p in self.list:
-            if p == posting:
-                p.add_occurrence()
+        if doc_id not in self._map:
+            self._map[doc_id] = Posting(doc_id)
+        self._map[doc_id].add_occurrence()
+
+    @property
+    def list(self):
+        return list(self._map.values())
 
     def __repr__(self):
         if len(self.list) == 0:
             return "[]"
         else:
-            return f"{[self.list]}"
+            return f"{self.list}"
 
 
 class InvertedIndex:
