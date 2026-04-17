@@ -83,11 +83,14 @@ class InvertedIndex:
 
     def populate_index(self, corpus):
         for recipe in corpus:
-            for title_token in tokenize(recipe.instructions):
-                term = Term(title_token, "title")
-                if term not in self.index:
-                    self.index[term] = PostingList()
-                self.index[term].add_occurrence(recipe.id)
+            for zone in ["title", "instructions"]:
+                text = getattr(recipe, zone)
+                print(text)
+                for token in tokenize(text):
+                    term = Term(token, zone)
+                    if term not in self.index:
+                        self.index[term] = PostingList()
+                    self.index[term].add_occurrence(recipe.id)
         for term in self.index:
             posting_list = self.index[term]
             term.update_idf(len(corpus)/len(posting_list))
