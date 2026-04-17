@@ -26,14 +26,25 @@ class Term:
     def __eq__(self, other):
         return (self.word == other.word and self.position == other.position)
 
+    def __repr__(self):
+        return self.word + '.' + self.position
+
+    def __hash__(self):
+        return hash(self.word+self.position)
+
 
 class PostingList:
     def __init__(self):
         self.list = []
-#we will ignore tf, because we are cooked
+# we will ignore tf, because we are cooked
+
     def add_occurence(self, doc_id):
         if doc_id not in self.list:
             self.list.append(doc_id)
+
+    def __repr__(self):
+        return [self.list[i] for i in self.list] if len(self.list) > 0 else '[]'
+
 
 class InvertedIndex:
     def __init__(self, corpus):
@@ -49,6 +60,10 @@ class InvertedIndex:
                     self.index[term] = PostingList()
                 self.index[term].add_occurence(recipe.id)
 
+    def __repr__(self):
+        return [str(term) + '->' + str(self.index[term]) for term in self.index]
+
+
 def create_recipe_corpus(filename):
     file = open(filename, "r")
     data = json.load(file)
@@ -62,9 +77,6 @@ def create_recipe_corpus(filename):
             id += 1
     file.close()
     return recipe_corpus
-
-
-corpus = create_recipe_corpus("recipes/recipes.json")
 
 
 def get_wordnet_pos(treebank_tag):
@@ -88,6 +100,6 @@ def tokenize(text):
     return word_list
 
 
-tuples = pos_tag(tokenize(corpus[1]))
-for word, pos in tuples:
-    print(wnl().lemmatize(word, get_wordnet_pos(pos)))
+corpus = create_recipe_corpus("recipes/recipes.json")
+idx = InvertedIndex(corpus)
+print(idx)
