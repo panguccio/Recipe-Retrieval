@@ -89,7 +89,6 @@ class InvertedIndex:
         for recipe in corpus:
             for zone in ["title", "instructions"]:
                 text = getattr(recipe, zone)
-                print(text)
                 for token in tokenize(text):
                     term = Term(token, zone)
                     if term not in self.index:
