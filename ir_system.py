@@ -4,8 +4,9 @@ import nltk
 from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer as wnl
 
-nltk.download('wordnet')
-nltk.download('averaged_perceptron_tagger_eng')
+# to do: maybe move these to a setup script or something
+nltk.download('wordnet', quiet=True)
+nltk.download('averaged_perceptron_tagger_eng', quiet=True)
 
 class Recipe:
     def __init__(self, id, title, ingredients, instructions):
