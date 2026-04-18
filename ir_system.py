@@ -87,8 +87,11 @@ class InvertedIndex:
 
     def populate_index(self, corpus):
         for recipe in corpus:
-            for zone in ["title", "instructions"]:
-                text = getattr(recipe, zone)
+            for zone in ["title", "instructions", "ingredients"]:
+                if zone == "ingredients":
+                    text = "".join(recipe.ingredients)
+                else:
+                    text = getattr(recipe, zone)
                 for token in tokenize(text):
                     term = Term(token, zone)
                     if term not in self.index:
