@@ -1,5 +1,6 @@
 import json
 import re
+import pickle
 from math import log
 
 import nltk
@@ -86,13 +87,16 @@ class InvertedIndex:
         self.populate_index(corpus)
 
     def populate_index(self, corpus):
-        for recipe in corpus:
+        for i, recipe in enumerate(corpus, start=1):
+            if i % 1000 == 0:
+                print(f"progress: {i}")
+
             for zone in ["title", "instructions", "ingredients"]:
                 if zone == "ingredients":
                     text = "".join(recipe.ingredients)
                 else:
                     text = getattr(recipe, zone)
-                for token in tokenize(text):
+                for token in fast_tokenize(text):
                     term = Term(token, zone)
                     if term not in self.index:
                         self.index[term] = PostingList()
@@ -147,11 +151,26 @@ def tokenize(text):
     # tag the words with part of speach
     words_pos = pos_tag(norm_text.split())
     # lemmatize with wordnet
-    word_list = [wnl().lemmatize(w, to_wnl_pos(p)) for w, p in words_pos]
-
-    return word_list
+    return [wnl().lemmatize(w, to_wnl_pos(p)) for w, p in words_pos]
 
 
-corpus = create_recipe_corpus("recipes/test.json")
-idx = InvertedIndex(corpus)
-print(idx)
+def fast_tokenize(text):
+    norm_text = re.sub(r'[^a-zA-Z\s]', ' ', text.lower())
+    tokens = norm_text.split()
+
+    lemmatizer = wnl()
+    return [lemmatizer.lemmatize(w, 'v') for w in tokens]
+
+
+corpus = create_recipe_corpus("recipes/recipes.json")
+
+
+#save index.pkl
+file = open("index.pkl", "wb")
+pickle.dump(idx, file)
+file.close()
+
+
+#load index.pkl
+with open("index.pkl", "rb") as f:
+    idx = pickle.load(f)
