@@ -15,6 +15,7 @@ nltk.download('stopwords')
 
 stop_words = set(stopwords.words('english'))
 
+
 class Recipe:
     def __init__(self, id, title, ingredients, instructions):
         self.id = id
@@ -110,7 +111,7 @@ class InvertedIndex:
 
     def __repr__(self):
         return f"{[str(term) + '->' + str(self.index[term]) for term in self.index]}"
-    
+
     def __len__(self):
         return len(self.index)
 
@@ -154,32 +155,55 @@ def tokenize(text):
     norm_text = re.sub(r'[^a-zA-Z\s]', '', norm_text)
     # lower case text
     norm_text = norm_text.lower()
-    
+
     # remove stop words
     splitted_text = norm_text.split()
     filtered_text = [word for word in splitted_text if word not in stop_words]
-
 
     # tag the words with part of speach
     words_pos = pos_tag(filtered_text)
     # lemmatize with wordnet
     return [wnl().lemmatize(w, to_wnl_pos(p)) for w, p in words_pos]
 
+
 if __name__ == "__main__":
-    load = False
+    load_from_pkl = True
 
-    if load:
-        corpus = create_recipe_corpus("recipes/recipes.json")
-        idx = InvertedIndex(corpus)
-
-        #save index.pkl
-        file = open("index.pkl", "wb")
-        pickle.dump(idx, file)
-        file.close()
-    else:
-        #load index.pkl 
+    if load_from_pkl:
+        # load index.pkl
         with open("index.pkl", "rb") as f:
             idx = pickle.load(f)
         print(len(idx))
-    
 
+    else:
+        corpus = create_recipe_corpus("recipes/recipes.json")
+        idx = InvertedIndex(corpus)
+
+        # save index.pkl
+        file = open("index.pkl", "wb")
+        pickle.dump(idx, file)
+        file.close()
+
+
+def build_forward_index(inverted_index):
+    # { doc_id: { term_object: tfidf_weight } }
+    forward_index = {}
+
+    for term, posting_list in inverted_index.index.items():
+        idf = term.idf
+
+        for doc_id, posting in posting_list._map.items():
+            # Prima volta che vedo questa ricetta, inizializzo a vuoto
+            if doc_id not in forward_index:
+                forward_index[doc_id] = {}
+
+            # Calcolo tfidf
+            tfidf = posting.tf * idf
+            forward_index[doc_id][term] = tfidf
+
+    return forward_index
+
+
+# Esecuzione
+recipe_vectors = build_forward_index(idx)
+print(recipe_vectors[1])
