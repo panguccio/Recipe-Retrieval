@@ -5,12 +5,15 @@ from math import log
 
 import nltk
 from nltk import pos_tag
+from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer as wnl
 
 # to do: maybe move these to a setup script or something
 nltk.download('wordnet', quiet=True)
 nltk.download('averaged_perceptron_tagger_eng', quiet=True)
+nltk.download('stopwords')
 
+stop_words = set(stopwords.words('english'))
 
 class Recipe:
     def __init__(self, id, title, ingredients, instructions):
@@ -96,7 +99,7 @@ class InvertedIndex:
                     text = "".join(recipe.ingredients)
                 else:
                     text = getattr(recipe, zone)
-                for token in fast_tokenize(text):
+                for token in tokenize(text):
                     term = Term(token, zone)
                     if term not in self.index:
                         self.index[term] = PostingList()
@@ -107,6 +110,9 @@ class InvertedIndex:
 
     def __repr__(self):
         return f"{[str(term) + '->' + str(self.index[term]) for term in self.index]}"
+    
+    def __len__(self):
+        return len(self.index)
 
 
 def create_recipe_corpus(filename):
@@ -148,29 +154,32 @@ def tokenize(text):
     norm_text = re.sub(r'[^a-zA-Z\s]', '', norm_text)
     # lower case text
     norm_text = norm_text.lower()
+    
+    # remove stop words
+    splitted_text = norm_text.split()
+    filtered_text = [word for word in splitted_text if word not in stop_words]
+
+
     # tag the words with part of speach
-    words_pos = pos_tag(norm_text.split())
+    words_pos = pos_tag(filtered_text)
     # lemmatize with wordnet
     return [wnl().lemmatize(w, to_wnl_pos(p)) for w, p in words_pos]
 
+if __name__ == "__main__":
+    load = False
 
-def fast_tokenize(text):
-    norm_text = re.sub(r'[^a-zA-Z\s]', ' ', text.lower())
-    tokens = norm_text.split()
+    if load:
+        corpus = create_recipe_corpus("recipes/recipes.json")
+        idx = InvertedIndex(corpus)
 
-    lemmatizer = wnl()
-    return [lemmatizer.lemmatize(w, 'v') for w in tokens]
+        #save index.pkl
+        file = open("index.pkl", "wb")
+        pickle.dump(idx, file)
+        file.close()
+    else:
+        #load index.pkl 
+        with open("index.pkl", "rb") as f:
+            idx = pickle.load(f)
+        print(len(idx))
+    
 
-
-corpus = create_recipe_corpus("recipes/recipes.json")
-
-
-#save index.pkl
-file = open("index.pkl", "wb")
-pickle.dump(idx, file)
-file.close()
-
-
-#load index.pkl
-with open("index.pkl", "rb") as f:
-    idx = pickle.load(f)
