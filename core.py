@@ -4,6 +4,7 @@ import nltk
 from nltk import pos_tag
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer as wnl
+from sortedcontainers import SortedDict
 
 nltk.download('wordnet', quiet=True)
 nltk.download('averaged_perceptron_tagger_eng', quiet=True)
@@ -40,6 +41,12 @@ class Term:
     def __hash__(self):
         return hash(self.word + self.position)
 
+    def __gt__(self, other):
+        return self.word > other.word
+
+    def __lt__(self, other):
+        return self.word < other.word
+
 
 class Posting:
     def __init__(self, doc_id):
@@ -72,10 +79,13 @@ class PostingList:
     def __len__(self):
         return len(self._map)
 
+    def __iter__(self):
+        return iter(self._map.values())
+
 
 class InvertedIndex:
     def __init__(self, corpus):
-        self.index = {}
+        self.index = SortedDict()
         self.populate_index(corpus)
 
     def populate_index(self, corpus):
