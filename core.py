@@ -86,6 +86,7 @@ class PostingList:
 class InvertedIndex:
     def __init__(self, corpus):
         self.index = SortedDict()
+        self.vocab = {}
         self.populate_index(corpus)
 
     def populate_index(self, corpus):
@@ -107,6 +108,7 @@ class InvertedIndex:
         for term in self.index:
             posting_list = self.index[term]
             term.update_idf(log(len(corpus) / len(posting_list)))
+        self.vocab = {term: i for i, term in enumerate(self.index.keys())}
 
     def __repr__(self):
         return f"{[str(term) + '->' + str(self.index[term]) for term in self.index]}"
