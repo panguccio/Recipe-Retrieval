@@ -95,6 +95,7 @@ class InvertedIndex:
             if i % 1000 == 0:
                 print(f"Progress: {i}/{total_docs}")
 
+            # for each term add 3 terms in the index, one for each zones
             for zone in ["title", "instructions", "ingredients"]:
                 if zone == "ingredients":
                     text = "".join(recipe.ingredients)
@@ -105,9 +106,13 @@ class InvertedIndex:
                     if term not in self.index:
                         self.index[term] = PostingList()
                     self.index[term].add_occurrence(recipe.id)
+
+        # calculate the idf for each term at the end
         for term in self.index:
             posting_list = self.index[term]
             term.update_idf(log(len(corpus) / len(posting_list)))
+
+        # update vocab: to easily obtain the position in the index of a term
         self.vocab = {term: i for i, term in enumerate(self.index.keys())}
 
     def __repr__(self):
@@ -115,6 +120,12 @@ class InvertedIndex:
 
     def __len__(self):
         return len(self.index)
+
+    def __iter__(self):
+        return iter(self.index.values())
+
+    def __contains__(self, term):
+        return term in self.index
 
 
 def to_wnl_pos(treebank_tag):

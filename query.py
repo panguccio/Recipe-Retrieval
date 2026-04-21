@@ -10,7 +10,7 @@ def query_to_vector(query, index, vocab):
     for token in tokenize(query):
         for zone in ["title", "instructions", "ingredients"]:
             term = Term(token, zone)
-            if term in index.index:
+            if term in index:
                 vector[vocab[term]] += 1
                 print(term)
     norma = np.linalg.norm(vector)
@@ -20,12 +20,10 @@ def query_to_vector(query, index, vocab):
 
 if __name__ == "__main__":
 
-
     with open("inverted_index.pkl", "rb") as file:
         idx = pickle.load(file)
 
     vocab = idx.vocab
-
 
     while True:
         query = input("\n Enter a query (or 'q' to quit): ").strip()

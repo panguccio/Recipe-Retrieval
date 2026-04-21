@@ -23,19 +23,19 @@ def create_recipe_corpus(filename):
 
 def build_doc_vectors(inverted_index, corpus):
 
-    number_of_terms = len(inverted_index.index)
+    number_of_terms = len(inverted_index)
     number_of_docs = len(corpus)
 
-    term_to_idx = {term: i for i, term in enumerate(inverted_index.index.keys())}
+    vocab = inverted_index.vocab
 
     # for the doc vectors, we generate a sparse array to avoid wasting space with zeros entries
     # this data structure instead of saving a #docs x #terms matrix, saves the value of tf-idf and the corresponding coordinates
     rows, cols, data = [], [], []
 
-    for term, postings in inverted_index.index.items():
+    for term, postings in inverted_index:
         for posting in postings:
             rows.append(posting.doc_id)
-            cols.append(term_to_idx[term])
+            cols.append(vocab[term])
             data.append(posting.tf * term.idf)
 
     return csr_array((data, (rows, cols)), shape=(number_of_docs, number_of_terms))
