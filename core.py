@@ -7,6 +7,8 @@ from nltk import pos_tag
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer as wnl
 from sortedcontainers import SortedDict
+from symspellpy import SymSpell, Verbosity
+
 
 nltk.download('wordnet', quiet=True)
 nltk.download('averaged_perceptron_tagger_eng', quiet=True)
@@ -89,6 +91,7 @@ class InvertedIndex:
     def __init__(self, corpus):
         self.index = SortedDict()
         self.vocab = {}
+        self.spell_corrector = SymSpell(max_dictionary_edit_distance=3)
         self.populate_index(corpus)
 
     def populate_index(self, corpus):
@@ -110,12 +113,19 @@ class InvertedIndex:
                     self.index[term].add_occurrence(recipe.id)
 
         # calculate the idf for each term at the end
-        for term in self.index:
+        for i, term in enumerate(self.index):
             posting_list = self.index[term]
             term.update_idf(log(len(corpus) / len(posting_list)))
+            # update vocab: to easily obtain the position in the index of a term
+            self.vocab[term] = i
+            self.spell_corrector.create_dictionary_entry(term.word, count=1)
 
-        # update vocab: to easily obtain the position in the index of a term
-        self.vocab = {term: i for i, term in enumerate(self.index.keys())}
+    def correct(self, word):
+        try:
+            suggestions = self.spell_corrector.lookup(word, Verbosity.CLOSEST, max_edit_distance=2)
+            return suggestions[0].term
+        except:
+            return ""
 
     def __repr__(self):
         return f"{[str(term) + '->' + str(self.index[term]) for term in self.index]}"
