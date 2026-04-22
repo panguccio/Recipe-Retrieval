@@ -1,5 +1,7 @@
 import re
 from math import log
+import scipy as sp
+from scipy.sparse.linalg import norm
 import nltk
 from nltk import pos_tag
 from nltk.corpus import stopwords
@@ -122,7 +124,7 @@ class InvertedIndex:
         return len(self.index)
 
     def __iter__(self):
-        return iter(self.index.values())
+        return iter(self.index.items())
 
     def __contains__(self, term):
         return term in self.index
@@ -149,3 +151,16 @@ def tokenize(text):
     words_pos = pos_tag([w for w in norm_text.split() if w not in stop_words])
     lemmatizer = wnl()
     return [lemmatizer.lemmatize(w, to_wnl_pos(p)) for w, p in words_pos]
+
+
+def cosine_similarity(vec1, vec2):
+    vec2 = vec2 / norm(vec2) if norm(vec2) > 0 else vec2   
+    
+    norm1 = norm(vec1) 
+    norm2 = norm(vec2)
+    
+    if norm1 == 0 or norm2 == 0:
+        return 0.0
+    
+    return (vec1.dot(vec2)) / (norm1 * norm2)
+
