@@ -2,6 +2,7 @@ import json
 import pickle
 from core import Recipe, InvertedIndex, tokenize
 from scipy.sparse import csr_array
+from sklearn.preprocessing import normalize
 
 def create_recipe_corpus(filename):
     with open(filename, "r") as file:
@@ -38,7 +39,10 @@ def build_doc_vectors(inverted_index, corpus):
             cols.append(vocab[term])
             data.append(posting.tf * term.idf)
 
-    return csr_array((data, (rows, cols)), shape=(number_of_docs, number_of_terms))
+    # generate the sparse matrix
+    vectors = csr_array((data, (rows, cols)), shape=(number_of_docs, number_of_terms))
+    # normalize the document vectors with euclidian norm
+    return  normalize(vectors, norm='l2', axis=1)
 
 if __name__ == "__main__":
 

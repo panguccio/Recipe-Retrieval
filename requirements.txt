@@ -3,3 +3,4 @@ scipy
 nltk
 sortedcontainers
 symspellpy
+scikit-learn
