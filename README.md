@@ -1,5 +1,17 @@
 # IR-System
 Project for Information Retrieval exam.
+
+How to run:
+1. clone the repository
+```bash
+git clone https://github.com/panguccio/RecipeRetrieval.git
+cd RecipeRetrieval
+```
+2. Install the dependencies
+```bash
+python3 -m pip install -r requirements.txt
+```
+3. Launch `testing.py`
 # Osservaizoni
     1. Non considerare ingredienti, nella tokenizzazione
     2. Fare due tokenizzazioni una per titolo una per instruction
