@@ -103,7 +103,7 @@ class InvertedIndex:
             # for each term add 3 terms in the index, one for each zones
             for zone in ["title", "instructions", "ingredients"]:
                 if zone == "ingredients":
-                    text = "".join(recipe.ingredients)
+                    text = " ".join(recipe.ingredients)
                 else:
                     text = getattr(recipe, zone)
                 for token in tokenize(text):
