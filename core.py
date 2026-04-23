@@ -101,7 +101,6 @@ def tokenize(text, stemming=False, simple=False):
         return [lemmatizer.lemmatize(w, "v") for w in norm_text.split() if w not in stop_words]
 
     words_pos = pos_tag([w for w in norm_text.split() if w not in stop_words])
-    lemmatizer = wnl()
     return [lemmatizer.lemmatize(w, to_wnl_pos(p)) for w, p in words_pos]
 
 
