@@ -4,6 +4,12 @@ from core import Term, tokenize
 from corpus_parser import load_corpus
 from scipy.sparse import csr_array
 
+ZONE_WEIGHTS = {
+    "title": 0.7,
+    "instructions": 0.1,
+    "ingredients": 0.2
+}
+
 
 def query_to_vector(query, index, vocab):
     vector = np.zeros(len(vocab))
@@ -13,7 +19,7 @@ def query_to_vector(query, index, vocab):
         for zone in ["title", "instructions", "ingredients"]:
             term = Term(token, zone)
             if term in index:
-                vector[vocab[term]] += 1
+                vector[vocab[term]] += ZONE_WEIGHTS[zone]
     norma = np.linalg.norm(vector)
     if norma > 0:
         vector = vector / norma
