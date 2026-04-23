@@ -1,26 +1,10 @@
-import json
+
 import pickle
-from core import Recipe, InvertedIndex, tokenize
+from core import InvertedIndex, tokenize
 from scipy.sparse import csr_array
 from sklearn.preprocessing import normalize
+from corpus_parser import load_corpus
 
-def create_recipe_corpus(filename):
-    with open(filename, "r") as file:
-        data = json.load(file)
-    
-    recipe_corpus = []
-    doc_id = 0
-    for index in data:
-        recipe_json = data[index]
-        if recipe_json and recipe_json.get('ingredients') and recipe_json.get('instructions') and recipe_json.get('title'):
-            recipe_corpus.append(Recipe(
-                doc_id, 
-                recipe_json["title"], 
-                recipe_json["ingredients"], 
-                recipe_json["instructions"]
-            ))
-            doc_id += 1
-    return recipe_corpus
 
 def build_doc_vectors(inverted_index, corpus):
 
@@ -47,10 +31,11 @@ def build_doc_vectors(inverted_index, corpus):
 if __name__ == "__main__":
 
     print("Loading corpus...")
-    corpus = create_recipe_corpus("recipes/recipes.json")
+    corpus = load_corpus("recipes/recipes.json")
 
     print("Building Inverted Index...")
     idx = InvertedIndex(corpus)
+    print(idx)
 
     print("Building Document Vectors...")
     doc_vectors = build_doc_vectors(idx, corpus)

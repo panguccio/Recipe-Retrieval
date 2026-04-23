@@ -1,8 +1,7 @@
 import numpy as np
 import pickle
 from core import Term, tokenize, cosine_similarity
-from build_index import create_recipe_corpus
-
+from corpus_parser import load_corpus
 from scipy.sparse import csr_array
 
 
@@ -30,12 +29,13 @@ if __name__ == "__main__":
     
     vocab = idx.vocab
 
-    corpus = create_recipe_corpus("recipes/recipes.json")
+    corpus = load_corpus("recipes/recipes.json")
 
     while True:
         query = input("\n Enter a query (or 'q' to quit): ").strip()
         if query.lower() == 'q':
             break
+
         vec_q = query_to_vector(query, idx, vocab)
         
         list_cos_sim = {}
@@ -48,6 +48,6 @@ if __name__ == "__main__":
         print("\nTop 5 most similar documents:")
         for doc_id, sim in list_cos_sim[:5]:
             print(f"Document ID: {doc_id}, Cosine Similarity: {sim}")
-            print(f"Recipe: {corpus[doc_id]}")
+            print(f"Recipe: {corpus[f"{doc_id}"]}")
         
         
