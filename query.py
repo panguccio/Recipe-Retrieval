@@ -1,6 +1,6 @@
 import numpy as np
 import pickle
-from core import Term, tokenize, cosine_similarity
+from core import Term, tokenize
 from corpus_parser import load_corpus
 from scipy.sparse import csr_array
 
@@ -10,10 +10,10 @@ def query_to_vector(query, index, vocab):
 
     for token in tokenize(query):
         for zone in ["title", "instructions", "ingredients"]:
+            token = index.correct(token)
             term = Term(token, zone)
             if term in index:
                 vector[vocab[term]] += 1
-                print(term)
     norma = np.linalg.norm(vector)
     if norma > 0:
         vector = vector / norma
@@ -26,28 +26,28 @@ if __name__ == "__main__":
 
     with open("doc_vectors.pkl", "rb") as file:
         doc_vect = pickle.load(file)
-    
+
     vocab = idx.vocab
 
     corpus = load_corpus("recipes/recipes.json")
 
+    #Addresses lazy initialization that makes the first query very slow
+    dummy_warmup = query_to_vector("test query", idx, vocab).dot(doc_vect.T).toarray()
+
     while True:
         query = input("\n Enter a query (or 'q' to quit): ").strip()
-        if query.lower() == 'q':
+        if query.lower() == "q":
             break
 
         vec_q = query_to_vector(query, idx, vocab)
-        
-        list_cos_sim = {}
-        
-        for i, vect in enumerate(doc_vect):
-            cos_sim = cosine_similarity(vec_q, vect)
-            list_cos_sim[i] = cos_sim
-        
-        list_cos_sim = sorted(list_cos_sim.items(), key=lambda x: x[1], reverse=True)
+
+        similarities = vec_q.dot(doc_vect.T).toarray().flatten()
+
+        top_5_indices = np.argsort(similarities)[::-1][:5]
+
         print("\nTop 5 most similar documents:")
-        for doc_id, sim in list_cos_sim[:5]:
-            print(f"Document ID: {doc_id}, Cosine Similarity: {sim}")
+        for doc_id in top_5_indices:
+
+            print(
+                f"Document ID: {doc_id}, Cosine Similarity: {similarities[doc_id]}")
             print(f"Recipe: {corpus[f"{doc_id}"]}")
-        
-        

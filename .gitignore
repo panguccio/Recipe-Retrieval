@@ -212,6 +212,9 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+#indexes
+doc_vectors.pkl 
+inverted_index.pkl
 
 plot_idf.py
 plot_idf2.py
