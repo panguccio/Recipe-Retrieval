@@ -15,18 +15,6 @@ nltk.download('averaged_perceptron_tagger_eng', quiet=True)
 nltk.download('stopwords', quiet=True)
 stop_words = set(stopwords.words('english'))
 
-
-class Recipe:
-    def __init__(self, id, title, ingredients, instructions):
-        self.id = id
-        self.title = title
-        self.ingredients = ingredients
-        self.instructions = instructions
-
-    def __repr__(self):
-        return self.title
-
-
 class Term:
     def __init__(self, word, position):
         self.word = word
@@ -96,21 +84,18 @@ class InvertedIndex:
 
     def populate_index(self, corpus):
         total_docs = len(corpus)
-        for i, recipe in enumerate(corpus, start=1):
-            if i % 1000 == 0:
-                print(f"Progress: {i}/{total_docs}")
+        for doc_id in corpus:
+            if int(doc_id) % 1000 == 0:
+                print(f"Progress: {doc_id}/{total_docs}")
 
-            # for each term add 3 terms in the index, one for each zones
+            # for each term add 3 terms in the index, one for each zone
             for zone in ["title", "instructions", "ingredients"]:
-                if zone == "ingredients":
-                    text = " ".join(recipe.ingredients)
-                else:
-                    text = getattr(recipe, zone)
+                text = corpus[doc_id][zone]
                 for token in tokenize(text):
                     term = Term(token, zone)
                     if term not in self.index:
                         self.index[term] = PostingList()
-                    self.index[term].add_occurrence(recipe.id)
+                    self.index[term].add_occurrence(doc_id)
 
         # calculate the idf for each term at the end
         for i, term in enumerate(self.index):
