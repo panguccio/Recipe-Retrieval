@@ -1,7 +1,6 @@
 import numpy as np
 import pickle
-import heapq
-from core import Term, tokenize, cosine_similarity
+from core import Term, tokenize
 from build_index import create_recipe_corpus
 from scipy.sparse import csr_array
 
@@ -28,9 +27,9 @@ if __name__ == "__main__":
 
     with open("doc_vectors.pkl", "rb") as file:
         doc_vect = pickle.load(file)
-
+        
+    
     vocab = idx.vocab
-
     corpus = create_recipe_corpus("recipes/recipes.json")
 
     while True:
@@ -40,24 +39,14 @@ if __name__ == "__main__":
 
         vec_q = query_to_vector(query, idx, vocab)
 
-        list_cos = []
-        K = 5
+        similarities = vec_q.dot(doc_vect.T).toarray().flatten()
 
-        for i, vect in enumerate(doc_vect):
-            cos_sim = cosine_similarity(vec_q, vect)
+        top_5_indices = np.argsort(similarities)[::-1][:5]
 
-            if len(list_cos) < K:
-                heapq.heappush(list_cos, (cos_sim, i))
-            else:
-                if cos_sim > list_cos[0][0]:
-                    heapq.heappop(list_cos)
-                    heapq.heappush(list_cos, (cos_sim, i))
-
-    
-        list_cos = sorted(list_cos, key=lambda x: x[0], reverse=True)
         print("\nTop 5 most similar documents:")
-        for cos_sim, doc_id in list_cos:
-            print(f"Document ID: {doc_id}, Cosine Similarity: {cos_sim}")
+        for doc_id in top_5_indices:
+            
+            print(f"Document ID: {doc_id}, Cosine Similarity: {similarities[doc_id]}")
             print(f"Recipe: {corpus[doc_id]}")
 
         
