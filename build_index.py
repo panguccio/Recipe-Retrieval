@@ -1,6 +1,6 @@
 
 import pickle
-from core import InvertedIndex, tokenize
+from index import InvertedIndex
 from scipy.sparse import csr_array
 from sklearn.preprocessing import normalize
 from corpus_parser import load_corpus
@@ -34,8 +34,8 @@ if __name__ == "__main__":
     corpus = load_corpus("recipes/recipes.json")
 
     print("Building Inverted Index...")
+
     idx = InvertedIndex(corpus)
-    print(idx)
 
     print("Building Document Vectors...")
     doc_vectors = build_doc_vectors(idx, corpus)

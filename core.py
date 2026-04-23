@@ -1,14 +1,11 @@
 import re
 from math import log
-import scipy as sp
 from scipy.sparse.linalg import norm
 import nltk
 from nltk import pos_tag
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer as wnl
-from sortedcontainers import SortedDict
-from symspellpy import SymSpell, Verbosity
-
+from nltk.stem import PorterStemmer
 
 nltk.download('wordnet', quiet=True)
 nltk.download('averaged_perceptron_tagger_eng', quiet=True)
@@ -21,8 +18,8 @@ class Term:
         self.position = position
         self.idf = 0
 
-    def update_idf(self, idf):
-        self.idf = idf
+    def update_idf(self, n_docs, doc_frequency):
+        self.idf = log(n_docs / doc_frequency)
 
     def __eq__(self, other):
         return self.word == other.word and self.position == other.position
@@ -75,54 +72,6 @@ class PostingList:
         return iter(self._map.values())
 
 
-class InvertedIndex:
-    def __init__(self, corpus):
-        self.index = SortedDict()
-        self.vocab = {}
-        self.spell_corrector = SymSpell(max_dictionary_edit_distance=3)
-        self.populate_index(corpus)
-
-    def populate_index(self, corpus):
-        total_docs = len(corpus)
-        for doc_id in corpus:
-            if int(doc_id) % 1000 == 0:
-                print(f"Progress: {doc_id}/{total_docs}")
-
-            # for each term add 3 terms in the index, one for each zone
-            for zone in ["title", "instructions", "ingredients"]:
-                text = corpus[doc_id][zone]
-                for token in tokenize(text):
-                    term = Term(token, zone)
-                    if term not in self.index:
-                        self.index[term] = PostingList()
-                    self.index[term].add_occurrence(doc_id)
-
-        # calculate the idf for each term at the end
-        for i, term in enumerate(self.index):
-            posting_list = self.index[term]
-            term.update_idf(log(len(corpus) / len(posting_list)))
-            # update vocab: to easily obtain the position in the index of a term
-            self.vocab[term] = i
-            self.spell_corrector.create_dictionary_entry(term.word, count=1)
-
-    def correct(self, word):
-        try:
-            suggestions = self.spell_corrector.lookup(word, Verbosity.CLOSEST, max_edit_distance=2)
-            return suggestions[0].term
-        except:
-            return ""
-
-    def __repr__(self):
-        return f"{[str(term) + '->' + str(self.index[term]) for term in self.index]}"
-
-    def __len__(self):
-        return len(self.index)
-
-    def __iter__(self):
-        return iter(self.index.items())
-
-    def __contains__(self, term):
-        return term in self.index
 
 
 def to_wnl_pos(treebank_tag):
@@ -137,14 +86,21 @@ def to_wnl_pos(treebank_tag):
     else:
         return 'n'
 
+lemmatizer = wnl()
+stemmer = PorterStemmer()
 
-def tokenize(text):
+def tokenize(text, stemming=False, simple=False):
     norm_text = re.sub(r'-', ' ', text)
     norm_text = re.sub(r'\'s', '', norm_text)
     norm_text = re.sub(r'[^a-zA-Z\s]', '', norm_text).lower()
 
+    if stemming:
+        return [stemmer.stem(w) for w in norm_text.split() if w not in stop_words]
+
+    if simple:
+        return [lemmatizer.lemmatize(w, "v") for w in norm_text.split() if w not in stop_words]
+
     words_pos = pos_tag([w for w in norm_text.split() if w not in stop_words])
-    lemmatizer = wnl()
     return [lemmatizer.lemmatize(w, to_wnl_pos(p)) for w, p in words_pos]
 
 
