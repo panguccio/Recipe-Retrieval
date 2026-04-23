@@ -11,6 +11,7 @@ def query_to_vector(query, index, vocab):
 
     for token in tokenize(query):
         for zone in ["title", "instructions", "ingredients"]:
+            token = index.correct(token)
             term = Term(token, zone)
             if term in index:
                 vector[vocab[term]] += 1
