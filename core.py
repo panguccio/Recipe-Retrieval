@@ -5,6 +5,7 @@ import nltk
 from nltk import pos_tag
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer as wnl
+from nltk.stem import PorterStemmer
 
 nltk.download('wordnet', quiet=True)
 nltk.download('averaged_perceptron_tagger_eng', quiet=True)
@@ -85,11 +86,19 @@ def to_wnl_pos(treebank_tag):
     else:
         return 'n'
 
+lemmatizer = wnl()
+stemmer = PorterStemmer()
 
-def tokenize(text):
+def tokenize(text, stemming=False, simple=False):
     norm_text = re.sub(r'-', ' ', text)
     norm_text = re.sub(r'\'s', '', norm_text)
     norm_text = re.sub(r'[^a-zA-Z\s]', '', norm_text).lower()
+
+    if stemming:
+        return [stemmer.stem(w) for w in norm_text.split() if w not in stop_words]
+
+    if simple:
+        return [lemmatizer.lemmatize(w, "v") for w in norm_text.split() if w not in stop_words]
 
     words_pos = pos_tag([w for w in norm_text.split() if w not in stop_words])
     lemmatizer = wnl()
