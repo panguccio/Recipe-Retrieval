@@ -27,11 +27,13 @@ if __name__ == "__main__":
 
     with open("doc_vectors.pkl", "rb") as file:
         doc_vect = pickle.load(file)
-        
-    
+
     vocab = idx.vocab
     corpus = create_recipe_corpus("recipes/recipes.json")
-
+    
+    #Addresses lazy initialization that makes the first query very slow
+    dummy_warmup = query_to_vector("test query", idx, vocab).dot(doc_vect.T).toarray()
+    
     while True:
         query = input("\n Enter a query (or 'q' to quit): ").strip()
         if query.lower() == "q":
@@ -45,9 +47,7 @@ if __name__ == "__main__":
 
         print("\nTop 5 most similar documents:")
         for doc_id in top_5_indices:
-            
-            print(f"Document ID: {doc_id}, Cosine Similarity: {similarities[doc_id]}")
+
+            print(
+                f"Document ID: {doc_id}, Cosine Similarity: {similarities[doc_id]}")
             print(f"Recipe: {corpus[doc_id]}")
-
-        
-
