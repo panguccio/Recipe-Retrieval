@@ -9,8 +9,8 @@ def query_to_vector(query, index, vocab):
     vector = np.zeros(len(vocab))
 
     for token in tokenize(query):
+        token = index.correct(token)
         for zone in ["title", "instructions", "ingredients"]:
-            token = index.correct(token)
             term = Term(token, zone)
             if term in index:
                 vector[vocab[term]] += 1
@@ -18,6 +18,7 @@ def query_to_vector(query, index, vocab):
     if norma > 0:
         vector = vector / norma
     return csr_array(vector)
+
 
 if __name__ == "__main__":
 
@@ -31,8 +32,9 @@ if __name__ == "__main__":
 
     corpus = load_corpus("recipes/recipes.json")
 
-    #Addresses lazy initialization that makes the first query very slow
-    dummy_warmup = query_to_vector("test query", idx, vocab).dot(doc_vect.T).toarray()
+    # Addresses lazy initialization that makes the first query very slow
+    dummy_warmup = query_to_vector(
+        "test query", idx, vocab).dot(doc_vect.T).toarray()
 
     while True:
         query = input("\n Enter a query (or 'q' to quit): ").strip()
@@ -50,4 +52,4 @@ if __name__ == "__main__":
 
             print(
                 f"Document ID: {doc_id}, Cosine Similarity: {similarities[doc_id]}")
-            print(f"Recipe: {corpus[f"{doc_id}"]}")
+            print(f"Recipe: {corpus[f"{doc_id}"]["title"]}")
