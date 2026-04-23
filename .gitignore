@@ -225,3 +225,4 @@ templates
 # recipe storage
 recipes/recipes.json
 recipes/recipes_raw.json
+recipes/recipes_raw_nosource_fn.json
