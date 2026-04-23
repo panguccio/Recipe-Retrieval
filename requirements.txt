@@ -4,3 +4,4 @@ nltk
 sortedcontainers
 symspellpy
 scikit-learn
+tqdm
