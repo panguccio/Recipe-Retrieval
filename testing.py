@@ -1,14 +1,16 @@
-import pickle
-from core import Term, PostingList, Posting
-from itertools import islice
-with open("inverted_index.pkl", "rb") as file:
-    idx = pickle.load(file)
+import cProfile, pstats
+from index import InvertedIndex
+from corpus_parser import load_corpus
 
+corpus = load_corpus("recipes/test.json")
 
-count = 0
-for term, posting_list in idx.index.items():
-    print(f"Termine: {term} | Ricette: {len(posting_list)}")
-    
-    count += 1
-    if count == 10:
-        break
+profiler = cProfile.Profile()
+profiler.enable()
+
+index = InvertedIndex(corpus)
+
+profiler.disable()
+
+stats = pstats.Stats(profiler)
+stats.sort_stats("cumtime")
+stats.print_stats(20)
