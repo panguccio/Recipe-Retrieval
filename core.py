@@ -104,14 +104,17 @@ def tokenize(text, stemming=False, simple=False):
     return [lemmatizer.lemmatize(w, to_wnl_pos(p)) for w, p in words_pos]
 
 
-def cosine_similarity(vec1, vec2):
-    vec2 = vec2 / norm(vec2) if norm(vec2) > 0 else vec2   
-    
-    norm1 = norm(vec1) 
-    norm2 = norm(vec2)
-    
-    if norm1 == 0 or norm2 == 0:
-        return 0.0
-    
-    return (vec1.dot(vec2)) / (norm1 * norm2)
+def rochio_algorithm(query_vec, relevant_vecs, non_relevant_vecs, alpha=1.0, beta=0.75, gamma=0.15):
+    if relevant_vecs.shape[0] > 0:
+        relevant_centroid = sum(relevant_vecs) / relevant_vecs.shape[0]
+    else:
+        relevant_centroid = 0
 
+    if non_relevant_vecs.shape[0] > 0:
+        non_relevant_centroid = sum(non_relevant_vecs) / non_relevant_vecs.shape[0]
+    else:
+        non_relevant_centroid = 0
+
+    modified_query = (alpha * query_vec) + (beta * relevant_centroid) - (gamma * non_relevant_centroid)
+    return modified_query
+    
