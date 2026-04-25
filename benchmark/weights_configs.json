@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "name": "Only Title",
+            "weights": {"title": 1.0, "ingredients": 0.0, "instructions": 0.0}
+        },
+        {
+            "name": "Only Ingredients",
+            "weights": {"title": 0.0, "ingredients": 1.0, "instructions": 0.0}
+        },
+        {
+            "name": "Only Instructions",
+            "weights": {"title": 0.0, "ingredients": 0.0, "instructions": 1.0}
+        },
+        {
+            "name": "Standard IR",
+            "weights": {"title": 1.0, "ingredients": 0.5, "instructions": 0.1}
+        },
+        {
+            "name": "Aggressive Title",
+            "weights": {"title": 2.0, "ingredients": 0.5, "instructions": 0.5}
+        },
+        {
+            "name": "Ingredients Focused",
+            "weights": {"title": 0.3, "ingredients": 1.0, "instructions": 0.1}
+        },
+        {
+            "name": "Title and Ingredients Only",
+            "weights": {"title": 1.0, "ingredients": 0.8, "instructions": 0.0}
+        },
+        {
+            "name": "Balanced Low Instructions",
+            "weights": {"title": 0.8, "ingredients": 0.6, "instructions": 0.2}
+        },
+        {
+            "name": "Experimental Procedure",
+            "weights": {"title": 1.0, "ingredients": 0.1, "instructions": 0.9}
+        }
+    ]
+}

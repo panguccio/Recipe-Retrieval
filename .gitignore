@@ -224,3 +224,5 @@ templates
 
 # recipe storage
 recipes/*.json
+benchmark/doc_vectors_test.pkl
+.gitignore

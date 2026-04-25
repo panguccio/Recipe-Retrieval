@@ -1,6 +1,7 @@
 import numpy as np
 import pickle
 from core import Term, tokenize, rochio_algorithm
+from scipy.sparse import csr_array
 
 class SearchEngine:
     def __init__(self, index_path, doc_vect_path, weights=None):
@@ -11,14 +12,15 @@ class SearchEngine:
             self.doc_vect = pickle.load(f)
         
         self.vocab = self.idx.vocab
+        # Pesi di default se non vengono passati
         self.weights = weights or {"title": 0.7, "instructions": 0.1, "ingredients": 0.2}
         
         # Warmup perchè python è pigro :)
         salamuccio = self.query_to_vector("warmup").dot(self.doc_vect.T)
 
-    def query_to_vector(self, query):
+    def query_to_vector(self, query_text):
         vector = np.zeros(len(self.vocab))
-        for token in tokenize(query):
+        for token in tokenize(query_text):
             token = self.idx.correct(token)
             for zone, weight in self.weights.items():
                 term = Term(token, zone)
@@ -30,7 +32,13 @@ class SearchEngine:
             vector /= norma
         return csr_array(vector)
 
-    def search(self, vec_q, n=10):
+    def search(self, query, n=10):
+        if isinstance(query, str):
+            vec_q = self.query_to_vector(query)
+        else:
+            vec_q = query 
+
+        # Calcolo similarità del coseno
         similarities = vec_q.dot(self.doc_vect.T).toarray().flatten()
         top_n_indices = np.argsort(similarities)[::-1][:n]
         return top_n_indices, similarities

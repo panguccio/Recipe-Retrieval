@@ -1,53 +1,42 @@
 [
     {
-        "query": "crab and lobster seafood",
-        "relevant_ids": [
-            "0",
-            "7",
-            "19"
-        ]
+        "query": "carbonara",
+        "relevant_ids": ["1"]
     },
     {
-        "query": "black beans",
-        "relevant_ids": [
-            "1",
-            "2"
-        ]
+        "query": "apple pie",
+        "relevant_ids": ["2"]
     },
     {
-        "query": "chicken wings",
-        "relevant_ids": [
-            "10",
-            "11",
-            "16"
-        ]
+        "query": "pasta with eggs",
+        "relevant_ids": ["1", "11", "16"]
     },
     {
-        "query": "rice dishes with spices",
-        "relevant_ids": [
-            "4",
-            "6",
-            "8",
-            "11"
-        ]
+        "query": "salmon with dill",
+        "relevant_ids": ["5"]
     },
     {
-        "query": "vegetable soup",
-        "relevant_ids": [
-            "10"
-        ]
+        "query": "chocolate dessert",
+        "relevant_ids": ["18"]
     },
     {
-        "query": "baked pasta and noodles",
-        "relevant_ids": [
-            "3",
-            "16"
-        ]
+        "query": "creamy soup",
+        "relevant_ids": ["3", "14"]
     },
     {
-        "query": "sweet desserts with fruit",
-        "relevant_ids": [
-            "15"
-        ]
+        "query": "tomato and basil",
+        "relevant_ids": ["7", "17", "19", "20"]
+    },
+    {
+        "query": "vegetarian eggplant",
+        "relevant_ids": ["12"]
+    },
+    {
+        "query": "tiramisu",
+        "relevant_ids": ["13"]
+    },
+    {
+        "query": "chickpea dip",
+        "relevant_ids": ["15"]
     }
 ]
