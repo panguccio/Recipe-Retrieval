@@ -1,0 +1,53 @@
+[
+    {
+        "query": "crab and lobster seafood",
+        "relevant_ids": [
+            "0",
+            "7",
+            "19"
+        ]
+    },
+    {
+        "query": "black beans",
+        "relevant_ids": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "query": "chicken wings",
+        "relevant_ids": [
+            "10",
+            "11",
+            "16"
+        ]
+    },
+    {
+        "query": "rice dishes with spices",
+        "relevant_ids": [
+            "4",
+            "6",
+            "8",
+            "11"
+        ]
+    },
+    {
+        "query": "vegetable soup",
+        "relevant_ids": [
+            "10"
+        ]
+    },
+    {
+        "query": "baked pasta and noodles",
+        "relevant_ids": [
+            "3",
+            "16"
+        ]
+    },
+    {
+        "query": "sweet desserts with fruit",
+        "relevant_ids": [
+            "15"
+        ]
+    }
+]
