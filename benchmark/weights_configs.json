@@ -13,12 +13,16 @@
             "weights": {"title": 0.0, "ingredients": 0.0, "instructions": 1.0}
         },
         {
+            "name": "Balanced All",
+            "weights": {"title": 1.0, "ingredients": 1.0, "instructions": 1.0}
+        },
+        {
             "name": "Standard IR",
             "weights": {"title": 1.0, "ingredients": 0.5, "instructions": 0.1}
         },
         {
             "name": "Aggressive Title",
-            "weights": {"title": 2.0, "ingredients": 0.5, "instructions": 0.5}
+            "weights": {"title": 1.0, "ingredients": 0.3, "instructions": 0.2}
         },
         {
             "name": "Ingredients Focused",

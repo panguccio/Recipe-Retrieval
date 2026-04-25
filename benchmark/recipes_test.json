@@ -1,102 +1,86 @@
 {
-    "0": {
-        "title": "Italian Meatballs in Tomato Sauce",
-        "ingredients": "1 lb ground beef\n1 egg\n1/2 cup breadcrumbs\n1/4 cup Parmesan cheese\n2 cups tomato passata",
-        "instructions": "Mix meat, egg, cheese, and breadcrumbs. Form into small balls. Simmer the meatballs directly in the tomato sauce for 20-25 minutes until cooked through."
-    },
-    "1": {
-        "title": "Classic Spaghetti Carbonara",
-        "ingredients": "12 oz spaghetti\n5 oz guanciale or pancetta\n4 large egg yolks\n2 oz Pecorino Romano cheese, grated\nFreshly cracked black pepper",
-        "instructions": "Whisk egg yolks and cheese in a small bowl. Fry guanciale in a pan until crisp. Cook pasta and toss with guanciale. Remove from heat and quickly stir in the egg mixture to create a creamy sauce."
-    },
-    "2": {
-        "title": "Old-Fashioned Apple Pie",
-        "ingredients": "3 Granny Smith apples, sliced\n1 1/2 cups all-purpose flour\n3/4 cup sugar\n2 eggs\n1/2 cup unsalted butter, melted\n1 tsp baking powder",
-        "instructions": "Peel and slice apples. Beat eggs and sugar, then add melted butter and flour sifted with baking powder. Pour into a greased pan, top with apples, and bake at 350°F (180°C) for 45 minutes."
-    },
-    "3": {
-        "title": "French Onion Soup",
-        "ingredients": "4 large yellow onions, thinly sliced\n1 quart beef broth\n1/4 cup butter\n1 tbsp flour\nToasted baguette slices\n1 cup Gruyere cheese, shredded",
-        "instructions": "Caramelize onions in butter over low heat for 30 minutes. Stir in flour, then add broth. Simmer for 20 minutes. Pour into crocks, top with bread and cheese, and broil until bubbly."
-    },
-    "4": {
-        "title": "Saffron Risotto (Risotto alla Milanese)",
-        "ingredients": "1 1/2 cups Carnaroli rice\n1 pinch saffron threads\n1 quart vegetable broth\n1 small onion, minced\n1/2 cup white wine\n1/4 cup grated Parmesan",
-        "instructions": "Sauté onion in butter, add rice and toast lightly. Deglaze with wine. Gradually add hot broth. Halfway through, stir in saffron dissolved in a bit of broth. Finish with butter and Parmesan."
-    },
-    "5": {
-        "title": "Lemon and Dill Salmon",
-        "ingredients": "2 salmon fillets\n1 lemon, sliced\n2 tbsp fresh dill, chopped\n2 tbsp olive oil\n1/2 tsp sea salt",
-        "instructions": "Place salmon on parchment paper. Season with lemon juice, oil, salt, and plenty of dill. Fold the parchment into a pouch and bake at 400°F (200°C) for 15 minutes."
-    },
-    "6": {
-        "title": "Classic Greek Salad",
-        "ingredients": "3 large tomatoes, cubed\n1 cucumber, sliced\n4 oz feta cheese, cubed\n1/2 cup Kalamata olives\n1/2 red onion, sliced\n1 tsp dried oregano",
-        "instructions": "Combine chopped vegetables in a large bowl. Add feta and olives. Drizzle with extra virgin olive oil and sprinkle with oregano."
-    },
-    "7": {
-        "title": "Authentic Genoese Pesto",
-        "ingredients": "2 cups fresh basil leaves\n2 cloves garlic\n2 tbsp pine nuts\n1/2 cup grated Parmesan cheese\n1/2 cup extra virgin olive oil",
-        "instructions": "Crush garlic and pine nuts in a mortar. Add basil leaves and a pinch of salt, grinding into a paste. Stir in cheese and slowly pour in oil until creamy."
-    },
-    "8": {
-        "title": "Coconut Chicken Curry",
-        "ingredients": "1 lb chicken breast, cubed\n2 tbsp curry powder\n1 can (13 oz) coconut milk\n1 cup Basmati rice\n1 medium onion, chopped",
-        "instructions": "Brown chicken and onions in a pan. Stir in curry powder and coconut milk. Simmer until the sauce thickens. Serve over steamed white rice."
-    },
-    "9": {
-        "title": "Fresh Mexican Guacamole",
-        "ingredients": "2 ripe avocados\n1 lime, juiced\n1/2 white onion, finely diced\n1 roma tomato, seeded and diced\n1/4 cup fresh cilantro, chopped\n1 tsp jalapeno, minced",
-        "instructions": "Mash avocado flesh in a bowl. Fold in onion, tomato, cilantro, and jalapeno. Add lime juice and salt to taste. Serve immediately."
-    },
-    "10": {
-        "title": "Homemade Meat Lasagna",
-        "ingredients": "Lasagna noodles\n2 cups meat ragu (bolognese)\n2 cups bechamel sauce\n1 cup grated Parmesan cheese",
-        "instructions": "Layer noodles, meat sauce, and bechamel in a baking dish. Repeat layers. Top with Parmesan and bake at 375°F (190°C) for 30 minutes until golden brown."
-    },
-    "11": {
-        "title": "Herbed French Omelette",
-        "ingredients": "3 large eggs\n1 tbsp fresh chives, minced\n1 tbsp parsley, minced\n1 tbsp unsalted butter\nSalt and pepper to taste",
-        "instructions": "Whisk eggs with herbs. Melt butter in a non-stick pan over medium heat. Pour in eggs and stir gently. Fold the omelette while the center is still slightly runny."
-    },
-    "12": {
-        "title": "Sicilian Caponata",
-        "ingredients": "2 large eggplants, cubed\n2 stalks celery, chopped\n1 onion, diced\n1 cup tomato puree\n2 tbsp capers\n1/2 cup green olives\n2 tbsp red wine vinegar\n1 tbsp sugar",
-        "instructions": "Fry eggplant cubes until golden. Sauté celery and onion with tomatoes and capers. Mix in eggplant, vinegar, and sugar. Simmer for 10 minutes to develop sweet and sour flavors."
-    },
-    "13": {
-        "title": "Classic Tiramisu",
-        "ingredients": "Ladyfingers (Savoiardi)\n1 cup mascarpone cheese\n3 large eggs, separated\n1 cup strong espresso, cooled\n1/2 cup sugar\nUnsweetened cocoa powder",
-        "instructions": "Whisk yolks with sugar and mascarpone. Fold in stiffened egg whites. Dip ladyfingers in coffee and layer with cream. Dust top with cocoa powder and chill for 4 hours."
-    },
-    "14": {
-        "title": "Roasted Pumpkin Soup",
-        "ingredients": "2 lbs pumpkin, cubed\n1 large potato, diced\n1 leek, sliced\n1 quart vegetable stock\n1 sprig fresh rosemary",
-        "instructions": "Roast pumpkin and potato until soft. Sauté leek in a pot, add roasted vegetables and stock. Simmer for 15 minutes then blend until smooth. Garnish with rosemary."
-    },
-    "15": {
-        "title": "Creamy Chickpea Hummus",
-        "ingredients": "1 can (15 oz) chickpeas, drained\n2 tbsp tahini\n1 lemon, juiced\n1 clove garlic\n1 tsp paprika\n2 tbsp olive oil",
-        "instructions": "Process chickpeas, tahini, lemon juice, and garlic in a blender until smooth. Add water if too thick. Serve drizzled with oil and sprinkled with paprika."
-    },
-    "16": {
-        "title": "Zucchini Frittata",
-        "ingredients": "4 large eggs\n2 medium zucchinis, sliced\n1/4 cup grated Parmesan\nFresh mint leaves\n1/2 onion, sliced",
-        "instructions": "Sauté zucchini and onion until tender. Whisk eggs with cheese and chopped mint. Pour over vegetables in the pan. Cook until set, then flip or broil top."
-    },
-    "17": {
-        "title": "Tomato Basil Bruschetta",
-        "ingredients": "1 loaf crusty Italian bread\n4 ripe tomatoes, diced\n2 cloves garlic\n1/4 cup fresh basil\n3 tbsp olive oil",
-        "instructions": "Toast bread slices and rub with a raw garlic clove. Toss diced tomatoes with oil and basil. Spoon the mixture onto the warm bread and serve."
-    },
-    "18": {
-        "title": "Dark Chocolate Mousse",
-        "ingredients": "7 oz dark chocolate (70%)\n3 eggs\n1/4 cup sugar\n1/2 cup heavy cream, whipped",
-        "instructions": "Melt chocolate. Stir in egg yolks. Gently fold in egg whites whipped with sugar, then fold in whipped cream. Refrigerate for at least 2 hours before serving."
-    },
-    "19": {
-        "title": "Andalusian Gazpacho",
-        "ingredients": "6 ripe tomatoes\n1 red bell pepper\n1 cucumber\n1 clove garlic\n1 slice stale bread\n2 tbsp sherry vinegar",
-        "instructions": "Blend all vegetables with the bread soaked in vinegar and water. Strain through a sieve for a smooth texture. Chill thoroughly and serve with a drizzle of oil."
-    }
+  "0": { "title": "Italian Meatballs in Tomato Sauce", "ingredients": "1 lb ground beef\n1 egg\n1/2 cup breadcrumbs\n1/4 cup Parmesan cheese\n2 cups tomato passata", "instructions": "Mix meat, egg, cheese, and breadcrumbs. Form into small balls. Simmer the meatballs directly in the tomato sauce for 20-25 minutes." },
+  "1": { "title": "Classic Spaghetti Carbonara", "ingredients": "12 oz spaghetti\n5 oz guanciale or pancetta\n4 large egg yolks\n2 oz Pecorino Romano cheese, grated\nFreshly cracked black pepper", "instructions": "Whisk egg yolks and cheese. Fry guanciale until crisp. Cook pasta and toss with guanciale. Remove from heat and stir in eggs." },
+  "2": { "title": "Old-Fashioned Apple Pie", "ingredients": "3 Granny Smith apples, sliced\n1 1/2 cups all-purpose flour\n3/4 cup sugar\n2 eggs\n1/2 cup unsalted butter\n1 tsp baking powder", "instructions": "Peel apples. Beat eggs and sugar, add butter and flour. Pour into pan, top with apples, and bake at 350°F." },
+  "3": { "title": "French Onion Soup", "ingredients": "4 yellow onions\n1 quart beef broth\n1/4 cup butter\n1 tbsp flour\nToasted baguette\n1 cup Gruyere cheese", "instructions": "Caramelize onions in butter. Add flour and broth. Simmer. Top with bread and cheese, then broil." },
+  "4": { "title": "Saffron Risotto", "ingredients": "1 1/2 cups rice\n1 pinch saffron\n1 quart broth\n1 onion\n1/2 cup white wine\n1/4 cup Parmesan", "instructions": "Sauté onion, toast rice. Deglaze with wine. Add broth gradually. Stir in saffron. Finish with butter and Parmesan." },
+  "5": { "title": "Lemon and Dill Salmon", "ingredients": "2 salmon fillets\n1 lemon\n2 tbsp fresh dill\n2 tbsp olive oil\n1/2 tsp sea salt", "instructions": "Season salmon with lemon, oil, salt, and dill. Bake in parchment at 400°F for 15 minutes." },
+  "6": { "title": "Classic Greek Salad", "ingredients": "3 tomatoes\n1 cucumber\n4 oz feta\n1/2 cup olives\n1/2 onion\n1 tsp oregano", "instructions": "Combine chopped vegetables, feta and olives. Drizzle with olive oil and oregano." },
+  "7": { "title": "Authentic Genoese Pesto", "ingredients": "2 cups basil\n2 cloves garlic\n2 tbsp pine nuts\n1/2 cup Parmesan\n1/2 cup olive oil", "instructions": "Crush garlic and pine nuts. Add basil and salt. Stir in cheese and oil until creamy." },
+  "8": { "title": "Coconut Chicken Curry", "ingredients": "1 lb chicken\n2 tbsp curry powder\n1 can coconut milk\n1 cup rice\n1 onion", "instructions": "Brown chicken and onions. Add curry and coconut milk. Simmer and serve over rice." },
+  "9": { "title": "Fresh Mexican Guacamole", "ingredients": "2 avocados\n1 lime\n1/2 white onion\n1 tomato\n1/4 cup cilantro\n1 tsp jalapeno", "instructions": "Mash avocados. Fold in onion, tomato, cilantro, and jalapeno. Add lime juice and salt." },
+  "10": { "title": "Homemade Meat Lasagna", "ingredients": "Lasagna noodles\n2 cups meat ragu\n2 cups bechamel\n1 cup Parmesan", "instructions": "Layer noodles, meat sauce, and bechamel. Top with Parmesan and bake at 375°F." },
+  "11": { "title": "Herbed French Omelette", "ingredients": "3 eggs\n1 tbsp chives\n1 tbsp parsley\n1 tbsp butter", "instructions": "Whisk eggs with herbs. Melt butter and pour in eggs. Fold when the center is still runny." },
+  "12": { "title": "Sicilian Caponata", "ingredients": "2 eggplants\n2 stalks celery\n1 onion\n1 cup tomato puree\n2 tbsp capers\n1/2 cup olives\n2 tbsp vinegar\n1 tbsp sugar", "instructions": "Fry eggplants. Sauté celery and onion with tomatoes. Mix in eggplant, vinegar, and sugar. Simmer." },
+  "13": { "title": "Classic Tiramisu", "ingredients": "Ladyfingers\n1 cup mascarpone\n3 eggs\n1 cup espresso\n1/2 cup sugar\nCocoa powder", "instructions": "Whisk yolks, sugar, and mascarpone. Fold in whites. Dip ladyfingers in coffee. Layer with cream. Chill." },
+  "14": { "title": "Roasted Pumpkin Soup", "ingredients": "2 lbs pumpkin\n1 potato\n1 leek\n1 quart stock\n1 sprig rosemary", "instructions": "Roast pumpkin and potato. Sauté leek, add roasted vegetables and stock. Simmer and blend." },
+  "15": { "title": "Creamy Chickpea Hummus", "ingredients": "1 can chickpeas\n2 tbsp tahini\n1 lemon\n1 clove garlic\n1 tsp paprika\n2 tbsp olive oil", "instructions": "Process chickpeas, tahini, lemon, and garlic. Add water if thick. Serve with oil and paprika." },
+  "16": { "title": "Zucchini Frittata", "ingredients": "4 eggs\n2 zucchinis\n1/4 cup Parmesan\nFresh mint\n1/2 onion", "instructions": "Sauté zucchini and onion. Whisk eggs with cheese and mint. Pour over vegetables and cook until set." },
+  "17": { "title": "Tomato Basil Bruschetta", "ingredients": "1 loaf bread\n4 tomatoes\n2 cloves garlic\n1/4 cup basil\n3 tbsp olive oil", "instructions": "Toast bread, rub with garlic. Toss tomatoes with oil and basil. Spoon onto bread." },
+  "18": { "title": "Dark Chocolate Mousse", "ingredients": "7 oz chocolate\n3 eggs\n1/4 cup sugar\n1/2 cup heavy cream", "instructions": "Melt chocolate. Stir in yolks. Fold in whipped egg whites and cream. Refrigerate." },
+  "19": { "title": "Andalusian Gazpacho", "ingredients": "6 tomatoes\n1 bell pepper\n1 cucumber\n1 clove garlic\n1 slice bread\n2 tbsp vinegar", "instructions": "Blend vegetables with soaked bread. Strain and chill. Serve with olive oil." },
+  "20": { "title": "Vegetarian Zucchini Carbonara", "ingredients": "12 oz spaghetti\n2 zucchinis\n4 egg yolks\n2 oz Pecorino\n1 tbsp olive oil\nBlack pepper", "instructions": "Whisk yolks and Pecorino. Sauté zucchinis until crispy. Toss pasta with zucchinis, then fold in eggs." },
+  "21": { "title": "Smoked Salmon Sea Carbonara", "ingredients": "12 oz linguine\n6 oz smoked salmon\n3 egg yolks\n1/2 cup Parmesan\n1 tbsp butter\nChives", "instructions": "Whisk yolks and Parmesan. Sauté salmon in butter. Toss pasta with salmon and stir in eggs." },
+  "22": { "title": "Asparagus and Turmeric Carbonara", "ingredients": "12 oz rigatoni\n1 bunch asparagus\n4 egg yolks\n2 oz Pecorino\n1/2 tsp turmeric\n1 clove garlic", "instructions": "Sauté asparagus with garlic. Whisk yolks with cheese and turmeric. Toss pasta with asparagus and egg cream." },
+  "23": { "title": "Spicy Nduja Carbonara", "ingredients": "12 oz spaghetti\n2 oz Nduja\n4 egg yolks\n2 oz Pecorino\nRed onion", "instructions": "Melt Nduja with onion. Toss spaghetti in spicy oil. Remove from heat and stir in egg mixture." },
+  "24": { "title": "Grilled Salmon with Asparagus", "ingredients": "2 salmon fillets\n1 bunch asparagus\n2 tbsp olive oil\n1 lemon\nSalt and pepper", "instructions": "Grill salmon and asparagus with oil and seasonings. Serve with lemon wedges." },
+  "25": { "title": "Spicy Tomato Arrabiata", "ingredients": "12 oz penne\n2 cups tomato passata\n2 cloves garlic\n1 tsp red chili flakes\nOlive oil", "instructions": "Sauté garlic and chili in oil. Add tomato sauce and simmer. Toss with cooked penne." },
+  "26": { "title": "Eggplant Parmesan (Melanzane)", "ingredients": "2 eggplants\n2 cups tomato sauce\n1 cup mozzarella\n1/2 cup Parmesan\nFresh basil", "instructions": "Fry eggplant slices. Layer with sauce, mozzarella, and Parmesan. Bake at 375°F until bubbly." },
+  "27": { "title": "Thai Green Curry", "ingredients": "1 lb chicken\n2 tbsp green curry paste\n1 can coconut milk\nBamboo shoots\nFish sauce\nBasil", "instructions": "Simmer curry paste in coconut milk. Add chicken and bamboo shoots. Season with fish sauce and basil." },
+  "28": { "title": "Traditional Beef Stew", "ingredients": "1 lb beef chunks\n2 potatoes\n2 carrots\n1 onion\n2 cups beef broth\nRosemary", "instructions": "Sear beef. Add chopped vegetables, broth, and rosemary. Simmer for 90 minutes until tender." },
+  "29": { "title": "Minestrone Vegetable Soup", "ingredients": "2 zucchinis\n2 potatoes\n1 cup beans\n1 cup tomato puree\n1 quart vegetable stock", "instructions": "Chop all vegetables. Simmer in stock and tomato puree for 45 minutes. Serve with olive oil." },
+  "30": { "title": "Mushroom Risotto", "ingredients": "1 1/2 cups rice\n1 lb mushrooms\n1 quart broth\n1/4 cup Parmesan\nButter\nGarlic", "instructions": "Sauté mushrooms with garlic. Toast rice, add broth slowly. Stir in mushrooms and finish with Parmesan." },
+
+  "31": { "title": "Pasta e Fagioli", "ingredients": "1 cup borlotti beans\n8 oz ditalini pasta\n2 cups tomato puree\n2 cloves garlic\n1 sprig rosemary\n1 quart vegetable broth", "instructions": "Simmer beans with garlic and rosemary. Add tomato puree and broth. Cook pasta directly in the soup until al dente." },
+  "32": { "title": "Neapolitan Pizza Margherita", "ingredients": "1 lb pizza dough\n1 cup San Marzano tomatoes, crushed\n6 oz fresh mozzarella\nFresh basil\n2 tbsp olive oil", "instructions": "Stretch dough thin. Spread crushed tomatoes, add mozzarella. Bake at maximum oven heat. Add fresh basil after baking." },
+  "33": { "title": "Penne all'Arrabbiata with Tuna", "ingredients": "12 oz penne\n1 can tuna in oil\n2 cups tomato passata\n2 cloves garlic\n1 tsp chili flakes\nParsley", "instructions": "Sauté garlic and chili. Add tomato sauce and tuna. Simmer and toss with cooked penne and parsley." },
+  "34": { "title": "Slow-Cooked Lamb Ragu", "ingredients": "1 lb lamb shoulder\n2 cups crushed tomatoes\n1 carrot\n1 onion\n1/2 cup red wine\nFresh thyme", "instructions": "Brown lamb in batches. Add wine, tomatoes, and vegetables. Braise covered for 2.5 hours. Shred and serve over pappardelle." },
+  "35": { "title": "Spinach and Ricotta Cannelloni", "ingredients": "12 cannelloni tubes\n2 cups ricotta\n2 cups spinach, blanched\n1 cup béchamel\n1 cup tomato sauce\n1/2 cup Parmesan", "instructions": "Mix ricotta and spinach. Fill tubes. Cover with béchamel and tomato sauce. Top with Parmesan and bake at 375°F." },
+  "36": { "title": "Baked Sea Bass with Capers and Olives", "ingredients": "2 sea bass fillets\n2 tbsp capers\n1/2 cup green olives\n3 tomatoes\n2 cloves garlic\n3 tbsp olive oil", "instructions": "Place fish in baking dish. Top with garlic, capers, olives, and diced tomatoes. Drizzle oil and bake at 400°F for 20 minutes." },
+  "37": { "title": "Potato Gnocchi with Gorgonzola Cream", "ingredients": "2 lbs potatoes\n1 1/2 cups flour\n1 egg\n4 oz gorgonzola\n1/2 cup heavy cream\nWalnuts", "instructions": "Boil and rice potatoes. Mix with flour and egg. Form gnocchi. Make gorgonzola cream. Boil gnocchi and toss with sauce and walnuts." },
+  "38": { "title": "Panzanella Bread Salad", "ingredients": "4 thick slices stale Tuscan bread\n4 tomatoes\n1 cucumber\n1/2 red onion\n1/4 cup basil\n3 tbsp red wine vinegar\n4 tbsp olive oil", "instructions": "Soak bread in water and squeeze dry. Tear and mix with chopped tomatoes, cucumber, onion, and basil. Dress with vinegar and oil." },
+  "39": { "title": "Ribollita Tuscan Bean Soup", "ingredients": "1 cup cannellini beans\n1/2 head black cabbage (cavolo nero)\n2 potatoes\n2 carrots\n1 quart vegetable broth\n3 thick slices stale bread\n2 cloves garlic", "instructions": "Sauté vegetables. Add beans and broth. Simmer 45 minutes. Add torn bread and let it thicken. Reboll (reheat) and serve with olive oil." },
+  "40": { "title": "Farro Salad with Roasted Vegetables", "ingredients": "1 cup farro\n1 zucchini\n1 red pepper\n1/2 cup feta\n1/4 cup sun-dried tomatoes\n3 tbsp olive oil\n1 lemon", "instructions": "Cook farro. Roast zucchini and pepper. Mix with farro, feta, sun-dried tomatoes, oil, and lemon juice." },
+  "41": { "title": "Chicken Cacciatore", "ingredients": "4 chicken thighs\n1 onion\n1 bell pepper\n1 cup white wine\n2 cups crushed tomatoes\n1/2 cup olives\nRosemary", "instructions": "Brown chicken. Sauté onion and pepper. Add wine and reduce. Add tomatoes and olives. Braise 40 minutes." },
+  "42": { "title": "Swordfish Sicilian Style", "ingredients": "2 swordfish steaks\n2 tbsp capers\n1/4 cup olives\n2 tomatoes\n1 clove garlic\n2 tbsp olive oil\nMint", "instructions": "Sear swordfish. Make a sauce with garlic, tomatoes, capers, and olives. Spoon over fish and garnish with mint." },
+  "43": { "title": "Polenta with Wild Mushrooms", "ingredients": "1 cup polenta\n1 lb mixed wild mushrooms\n3 cups water or broth\n2 cloves garlic\n2 tbsp butter\n1/4 cup Parmesan", "instructions": "Cook polenta slowly in broth. Sauté mushrooms with garlic and butter. Serve mushrooms over soft polenta with Parmesan." },
+  "44": { "title": "Cacio e Pepe", "ingredients": "12 oz spaghetti or tonnarelli\n2 oz Pecorino Romano, finely grated\n1 oz Parmesan, finely grated\n2 tsp freshly cracked black pepper", "instructions": "Toast pepper in dry pan. Cook pasta, reserve pasta water. Make cream with cheese and water. Toss pasta with pepper and cheese cream." },
+  "45": { "title": "Amatriciana", "ingredients": "12 oz rigatoni\n4 oz guanciale\n1 cup San Marzano tomatoes\n1/2 tsp chili flakes\n2 oz Pecorino Romano\nDry white wine", "instructions": "Render guanciale, add chili. Deglaze with wine. Add tomatoes and simmer. Toss with rigatoni and Pecorino." },
+  "46": { "title": "Gricia", "ingredients": "12 oz rigatoni\n5 oz guanciale\n2 oz Pecorino Romano\nBlack pepper\nPasta water", "instructions": "Render guanciale. Cook pasta and reserve water. Make emulsion with Pecorino and pasta water. Toss with guanciale and pepper." },
+  "47": { "title": "Pappardelle with Truffle and Mushrooms", "ingredients": "12 oz pappardelle\n1 lb mixed mushrooms\n1 oz black truffle or truffle paste\n2 tbsp butter\n1 clove garlic\n1/4 cup Parmesan", "instructions": "Sauté mushrooms with garlic and butter. Add truffle. Toss with cooked pappardelle and finish with Parmesan." },
+  "48": { "title": "Cannoli Siciliani", "ingredients": "12 cannoli shells\n2 cups ricotta\n1/2 cup powdered sugar\n1/2 cup chocolate chips\n1 tsp orange zest\nPistachios", "instructions": "Drain ricotta. Mix with sugar, chocolate chips, and orange zest. Fill shells just before serving. Dip ends in pistachios." },
+  "49": { "title": "Panna Cotta with Berry Coulis", "ingredients": "2 cups heavy cream\n1/4 cup sugar\n2 tsp gelatin\n1 tsp vanilla\n1 cup mixed berries\n2 tbsp sugar (for coulis)", "instructions": "Dissolve gelatin in warm cream with sugar and vanilla. Pour into molds and chill overnight. Blend berries with sugar for coulis." },
+  "50": { "title": "Osso Buco Milanese", "ingredients": "4 veal shanks\n1 onion\n2 carrots\n2 stalks celery\n1 cup white wine\n2 cups broth\n1 can crushed tomatoes\nGremolata (parsley, lemon, garlic)", "instructions": "Dredge shanks in flour and brown. Sauté soffritto. Add wine, tomatoes, and broth. Braise 2 hours. Serve with gremolata." },
+  "51": { "title": "Arancini Rice Balls", "ingredients": "2 cups cooked saffron risotto (leftovers)\n1 cup meat ragu\n4 oz mozzarella, cubed\n1 cup breadcrumbs\n2 eggs\nOil for frying", "instructions": "Form risotto into balls around ragu and mozzarella. Dip in egg and breadcrumbs. Deep fry at 350°F until golden." },
+  "52": { "title": "Vitello Tonnato", "ingredients": "1 lb veal loin, roasted and sliced thin\n1 can tuna in oil\n2 tbsp capers\n2 anchovy fillets\n1/2 cup mayonnaise\n1 lemon", "instructions": "Blend tuna, capers, anchovies, mayo, and lemon into a sauce. Spoon generously over cold sliced veal. Garnish with capers." },
+  "53": { "title": "Seafood Linguine alle Vongole", "ingredients": "12 oz linguine\n2 lbs clams\n3 cloves garlic\n1/2 cup white wine\n1/4 cup parsley\n3 tbsp olive oil\nChili flakes", "instructions": "Sauté garlic and chili. Add clams and wine. Cover until clams open. Toss with linguine and parsley." },
+  "54": { "title": "Prawn Risotto with Bisque", "ingredients": "1 1/2 cups rice\n1 lb prawns\n1 onion\n1/2 cup white wine\n2 cups prawn bisque (homemade or prepared)\n1 cup broth\nChives", "instructions": "Sauté onion, toast rice, deglaze wine. Alternate bisque and broth. Add prawns in last 5 minutes. Garnish with chives." },
+  "55": { "title": "Insalata Caprese", "ingredients": "3 ripe tomatoes\n8 oz fresh buffalo mozzarella\n1/4 cup fresh basil\n3 tbsp extra-virgin olive oil\nSea salt\nBlack pepper", "instructions": "Slice tomatoes and mozzarella. Alternate slices on plate. Add basil, drizzle generously with olive oil, season, and serve." },
+  "56": { "title": "Torta della Nonna", "ingredients": "2 cups flour\n1/2 cup butter\n1 cup sugar\n3 eggs\n2 cups pastry cream\nPine nuts\nPowdered sugar", "instructions": "Make shortcrust pastry. Line tart tin. Fill with pastry cream. Cover with pastry. Top with pine nuts and bake at 350°F. Dust with powdered sugar." },
+  "57": { "title": "Focaccia Genovese", "ingredients": "3 cups flour\n1 cup water\n1/4 cup olive oil\n1 tsp dry yeast\n1 tsp salt\nFlaky sea salt\nRosemary", "instructions": "Make dough and let it rise twice. Stretch into oiled pan and dimple vigorously. Top with oil, sea salt, and rosemary. Bake at 450°F until golden." },
+  "58": { "title": "Crostata with Apricot Jam", "ingredients": "2 cups flour\n1/2 cup butter\n1/2 cup sugar\n2 egg yolks\n1 cup apricot jam\n1 tsp lemon zest", "instructions": "Make shortcrust pastry with butter, sugar, and yolks. Rest in fridge. Line tart tin, spread jam, top with lattice strips. Bake at 350°F." },
+  "59": { "title": "Bagna Cauda with Crudités", "ingredients": "1/2 cup olive oil\n4 tbsp butter\n6 anchovy fillets\n4 cloves garlic\nAssorted raw vegetables (celery, peppers, carrots, fennel)", "instructions": "Slowly melt anchovies and garlic in oil and butter over very low heat. Serve warm as a dip for crudités." },
+  "60": { "title": "Tuscan Ribollita with Cavolo Nero", "ingredients": "1 cup borlotti beans\n1/2 head cavolo nero\n1 leek\n2 potatoes\n3 slices stale bread\n1 quart vegetable broth\nOlive oil", "instructions": "Cook beans separately. Sauté leek, add potatoes, cavolo nero, beans, and broth. Simmer. Add stale bread to thicken. Serve with a drizzle of olive oil." },
+  "61": { "title": "Pan-Seared Tuna with Sesame Crust", "ingredients": "2 tuna steaks\n2 tbsp sesame seeds\n1 tbsp soy sauce\n1 tsp ginger\n1 tbsp olive oil\n1 lime", "instructions": "Coat tuna in sesame seeds. Sear 1-2 minutes per side. Mix soy, ginger, and lime for dipping sauce. Slice and serve rare." },
+  "62": { "title": "Shakshuka", "ingredients": "6 eggs\n2 cups crushed tomatoes\n1 red pepper\n1 onion\n2 cloves garlic\n1 tsp cumin\n1 tsp paprika\nFresh parsley", "instructions": "Sauté onion, pepper, and garlic. Add spices and tomatoes. Simmer 10 minutes. Make wells and crack in eggs. Cover and cook until just set." },
+  "63": { "title": "Taboule with Bulgur and Herbs", "ingredients": "1 cup bulgur wheat\n4 tomatoes, diced\n1 cucumber\n1 bunch parsley\n1/4 cup mint\n3 tbsp olive oil\n2 tbsp lemon juice", "instructions": "Soak bulgur in boiling water 20 minutes. Fluff and cool. Mix with vegetables and herbs. Dress generously with lemon and olive oil." },
+  "64": { "title": "Japanese Miso Soup", "ingredients": "4 cups dashi stock\n3 tbsp white miso paste\n4 oz firm tofu, cubed\n2 tbsp dried wakame seaweed\n2 spring onions, sliced", "instructions": "Heat dashi. Rehydrate wakame. Dissolve miso in a ladle of broth before stirring back in. Add tofu and wakame. Garnish with spring onions." },
+  "65": { "title": "Lentil Soup with Cumin and Lemon", "ingredients": "1 cup red lentils\n1 onion\n2 cloves garlic\n1 tsp cumin\n1/2 tsp turmeric\n1 lemon\n1 quart vegetable broth\nOlive oil", "instructions": "Sauté onion and garlic with spices. Add lentils and broth. Simmer 25 minutes. Blend partially. Squeeze lemon and finish with olive oil." },
+  "66": { "title": "Greek Spanakopita", "ingredients": "1 lb spinach, blanched\n8 oz feta\n3 eggs\n1/2 onion\n1/4 cup dill\n10 sheets filo pastry\n1/4 cup olive oil", "instructions": "Mix squeezed spinach, crumbled feta, eggs, and dill. Layer filo sheets with oil. Add filling, fold, top with remaining filo. Bake at 375°F." },
+  "67": { "title": "Boeuf Bourguignon", "ingredients": "2 lbs beef chuck\n1 bottle red wine\n1/2 lb lardons\n1/2 lb button mushrooms\n2 carrots\n1 onion\nThyme and bay leaf", "instructions": "Marinate beef in wine overnight. Brown lardons, then beef. Braise with wine, vegetables, and herbs for 3 hours until very tender." },
+  "68": { "title": "Ratatouille Provençale", "ingredients": "1 eggplant\n2 zucchinis\n3 tomatoes\n1 red pepper\n1 yellow pepper\n1 onion\n3 cloves garlic\nProvençal herbs", "instructions": "Roast vegetables separately. Combine in a pan with garlic and herbs. Simmer 20 minutes to meld flavors. Serve hot or at room temperature." },
+  "69": { "title": "Turkish Red Lentil Soup (Mercimek)", "ingredients": "1 cup red lentils\n1 onion\n1 carrot\n1 potato\n1 tsp red pepper flakes\n1 tsp cumin\n1 quart vegetable broth\n2 tbsp butter", "instructions": "Sauté onion and carrot. Add lentils, potato, spices, and broth. Simmer 30 minutes and blend. Finish with butter-fried red pepper flakes." },
+  "70": { "title": "Moussaka", "ingredients": "2 eggplants\n1 lb ground lamb\n2 cups béchamel\n2 cups tomato sauce\n1 onion\n1/2 cup Parmesan\n1 tsp cinnamon", "instructions": "Fry eggplant slices. Brown lamb with onion, cinnamon, and tomato sauce. Layer eggplant and lamb. Top with béchamel and Parmesan. Bake at 375°F." },
+  "71": { "title": "Pad Thai with Shrimp", "ingredients": "8 oz rice noodles\n1/2 lb shrimp\n2 eggs\n1/2 cup bean sprouts\n3 tbsp fish sauce\n2 tbsp tamarind paste\n1 tbsp sugar\nPeanuts and lime", "instructions": "Soak noodles. Stir-fry shrimp and push aside. Scramble eggs. Add noodles and sauce. Toss with sprouts. Serve with peanuts and lime." },
+  "72": { "title": "Vietnamese Pho Bo", "ingredients": "2 lbs beef bones\n8 oz rice noodles\n1/2 lb beef sirloin, sliced thin\n1 onion\n2-inch ginger\nStar anise, cloves, cinnamon\nBean sprouts, basil, lime", "instructions": "Char onion and ginger. Simmer bones with spices for 3+ hours. Strain. Cook noodles. Pour boiling broth over raw beef slices. Serve with fresh herbs." },
+  "73": { "title": "Soupe à l'Oignon Gratinée", "ingredients": "5 large onions\n1 quart beef broth\n1/2 cup dry white wine\n2 tbsp butter\n1 tbsp flour\nBaguette slices\n1 cup Gruyere, grated", "instructions": "Caramelize onions slowly for 45 minutes. Add flour, wine, and broth. Simmer. Top bowls with baguette slices and cheese. Broil until bubbling." },
+  "74": { "title": "Salmorejo Cordobes", "ingredients": "2 lbs ripe tomatoes\n1 cup white bread (crustless)\n1 clove garlic\n3 tbsp sherry vinegar\n1/4 cup olive oil\nHard-boiled eggs and serrano ham (to garnish)", "instructions": "Blend tomatoes, bread, garlic, and vinegar until very smooth. Stream in olive oil. Chill. Serve with diced egg and ham on top." },
+  "75": { "title": "Mango and Prawn Summer Rolls", "ingredients": "8 rice paper wrappers\n1/2 lb cooked prawns\n1 mango, julienned\n1 cucumber, julienned\n1/2 cup fresh mint and basil\nRice vermicelli\nHoisin-peanut dipping sauce", "instructions": "Soak rice papers. Fill with noodles, prawns, mango, cucumber, and herbs. Roll tightly. Serve with hoisin-peanut sauce." },
+  "76": { "title": "Chocolate Lava Cake", "ingredients": "4 oz dark chocolate\n4 tbsp butter\n2 eggs\n2 egg yolks\n1/4 cup sugar\n2 tbsp flour", "instructions": "Melt chocolate and butter. Whisk eggs and sugar until fluffy. Fold into chocolate, add flour. Pour into buttered ramekins. Bake at 425°F for exactly 12 minutes." },
+  "77": { "title": "Crème Brûlée", "ingredients": "2 cups heavy cream\n5 egg yolks\n1/2 cup sugar\n1 vanilla bean\n4 tbsp sugar (for topping)", "instructions": "Infuse cream with vanilla. Whisk yolks and sugar. Combine and strain. Bake in water bath at 325°F for 40 minutes. Chill. Sprinkle sugar and torch." },
+  "78": { "title": "Tarte Tatin", "ingredients": "4 large apples (Golden or Granny Smith)\n1/2 cup sugar\n4 tbsp butter\n1 sheet puff pastry", "instructions": "Cook sugar and butter to amber caramel in oven-safe pan. Arrange apples and cook until softened. Cover with puff pastry. Bake at 400°F and invert while warm." },
+  "79": { "title": "Salmon Tartare with Avocado", "ingredients": "10 oz fresh sushi-grade salmon, diced\n1 avocado, diced\n1 tbsp soy sauce\n1 tsp sesame oil\n1 lime\n1 tsp fresh ginger\nSesame seeds\nChives", "instructions": "Dice salmon finely. Mix with soy, sesame oil, ginger, and lime juice. Arrange over diced avocado. Garnish with sesame seeds and chives." },
+  "80": { "title": "Roasted Cauliflower with Tahini and Pomegranate", "ingredients": "1 head cauliflower\n3 tbsp olive oil\n1 tsp cumin\n3 tbsp tahini\n1 lemon\n1/4 cup pomegranate seeds\nParsley", "instructions": "Cut cauliflower into steaks. Roast at 425°F with cumin and olive oil until charred. Drizzle with tahini and lemon. Top with pomegranate seeds and parsley." },
+  "81": { "title": "Butternut Squash and Ginger Soup", "ingredients": "2 lbs butternut squash\n1 onion\n1-inch fresh ginger\n1 quart vegetable broth\n1/2 cup coconut cream\n1 tsp coriander", "instructions": "Roast squash. Sauté onion and ginger. Add squash, broth, and coriander. Simmer and blend until smooth. Stir in coconut cream." },
+  "82": { "title": "Steak Frites", "ingredients": "2 rib-eye steaks\n4 large potatoes\n3 tbsp butter\n2 cloves garlic\nThyme\nOil for frying", "instructions": "Double-fry potatoes. Sear steaks in butter with garlic and thyme, basting constantly. Rest 5 minutes. Serve with frites and mustard." }
 }

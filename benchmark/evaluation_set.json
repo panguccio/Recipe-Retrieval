@@ -1,42 +1,246 @@
 [
-    {
-        "query": "carbonara",
-        "relevant_ids": ["1"]
-    },
-    {
-        "query": "apple pie",
-        "relevant_ids": ["2"]
-    },
-    {
-        "query": "pasta with eggs",
-        "relevant_ids": ["1", "11", "16"]
-    },
-    {
-        "query": "salmon with dill",
-        "relevant_ids": ["5"]
-    },
-    {
-        "query": "chocolate dessert",
-        "relevant_ids": ["18"]
-    },
-    {
-        "query": "creamy soup",
-        "relevant_ids": ["3", "14"]
-    },
-    {
-        "query": "tomato and basil",
-        "relevant_ids": ["7", "17", "19", "20"]
-    },
-    {
-        "query": "vegetarian eggplant",
-        "relevant_ids": ["12"]
-    },
-    {
-        "query": "tiramisu",
-        "relevant_ids": ["13"]
-    },
-    {
-        "query": "chickpea dip",
-        "relevant_ids": ["15"]
-    }
+  {
+    "query": "carbonara",
+    "relevant_ids": ["1", "20", "21", "22", "23"]
+  },
+  {
+    "query": "spicy pasta",
+    "relevant_ids": ["23", "25", "33", "45"]
+  },
+  {
+    "query": "salmon",
+    "relevant_ids": ["5", "21", "24", "61", "79"]
+  },
+  {
+    "query": "apple pie",
+    "relevant_ids": ["2", "78"]
+  },
+  {
+    "query": "pasta with eggs",
+    "relevant_ids": ["1", "20", "21", "22", "23", "44", "45", "46"]
+  },
+  {
+    "query": "zucchini",
+    "relevant_ids": ["16", "20", "29", "40", "68"]
+  },
+  {
+    "query": "vegetarian eggplant",
+    "relevant_ids": ["12", "26", "68"]
+  },
+  {
+    "query": "coconut milk curry",
+    "relevant_ids": ["8", "27", "81"]
+  },
+  {
+    "query": "tomato and basil",
+    "relevant_ids": ["7", "10", "17", "19", "25", "26", "32", "38", "55"]
+  },
+  {
+    "query": "creamy soup",
+    "relevant_ids": ["3", "14", "29", "39", "60", "65", "69", "73", "81"]
+  },
+  {
+    "query": "chocolate mousse",
+    "relevant_ids": ["18"]
+  },
+  {
+    "query": "tiramisu",
+    "relevant_ids": ["13"]
+  },
+  {
+    "query": "rice dish",
+    "relevant_ids": ["4", "8", "30", "51", "54"]
+  },
+  {
+    "query": "beef recipe",
+    "relevant_ids": ["0", "10", "28", "34", "67", "72", "82"]
+  },
+  {
+    "query": "hummus chickpea",
+    "relevant_ids": ["15"]
+  },
+  {
+    "query": "saffron",
+    "relevant_ids": ["4", "51"]
+  },
+  {
+    "query": "garlic and oil",
+    "relevant_ids": ["7", "17", "22", "25", "30", "53", "57", "59"]
+  },
+  {
+    "query": "oven baked dessert",
+    "relevant_ids": ["2", "56", "58", "76", "77", "78"]
+  },
+  {
+    "query": "guacamole",
+    "relevant_ids": ["9"]
+  },
+  {
+    "query": "cold summer soup",
+    "relevant_ids": ["19", "74"]
+  },
+  {
+    "query": "risotto",
+    "relevant_ids": ["4", "30", "54"]
+  },
+  {
+    "query": "fish and seafood",
+    "relevant_ids": ["5", "21", "24", "33", "36", "42", "52", "53", "54", "61", "72", "75", "79"]
+  },
+  {
+    "query": "pasta guanciale",
+    "relevant_ids": ["1", "45", "46"]
+  },
+  {
+    "query": "fresh herbs salad",
+    "relevant_ids": ["6", "38", "40", "55", "63"]
+  },
+  {
+    "query": "egg-based dish",
+    "relevant_ids": ["11", "16", "62", "77"]
+  },
+  {
+    "query": "bread and dough",
+    "relevant_ids": ["17", "32", "57"]
+  },
+  {
+    "query": "slow-cooked meat",
+    "relevant_ids": ["0", "28", "34", "41", "50", "67"]
+  },
+  {
+    "query": "mushroom recipe",
+    "relevant_ids": ["30", "43", "47"]
+  },
+  {
+    "query": "lemon recipe",
+    "relevant_ids": ["5", "15", "24", "49", "50", "53", "63", "65", "80"]
+  },
+  {
+    "query": "capers and olives",
+    "relevant_ids": ["12", "36", "42", "52", "53", "59"]
+  },
+  {
+    "query": "asparagus",
+    "relevant_ids": ["22", "24"]
+  },
+  {
+    "query": "Pecorino Romano",
+    "relevant_ids": ["1", "20", "22", "23", "44", "45", "46"]
+  },
+  {
+    "query": "dessert with cream",
+    "relevant_ids": ["13", "18", "49", "77"]
+  },
+  {
+    "query": "puff pastry",
+    "relevant_ids": ["78"]
+  },
+  {
+    "query": "spinach and feta",
+    "relevant_ids": ["35", "66"]
+  },
+  {
+    "query": "pizza",
+    "relevant_ids": ["32"]
+  },
+  {
+    "query": "gnocchi pasta",
+    "relevant_ids": ["37"]
+  },
+  {
+    "query": "cheese and butter pasta",
+    "relevant_ids": ["44", "46", "47"]
+  },
+  {
+    "query": "Mediterranean vegetables",
+    "relevant_ids": ["6", "12", "26", "36", "38", "40", "63", "68", "80"]
+  },
+  {
+    "query": "spicy with chili",
+    "relevant_ids": ["23", "25", "27", "33", "45", "53", "62", "65", "69"]
+  },
+  {
+    "query": "white wine cooking",
+    "relevant_ids": ["4", "41", "44", "45", "46", "50", "53", "54", "73"]
+  },
+  {
+    "query": "beans and legumes",
+    "relevant_ids": ["15", "29", "31", "39", "60", "65", "69"]
+  },
+  {
+    "query": "stuffed pasta baked",
+    "relevant_ids": ["35", "51"]
+  },
+  {
+    "query": "potato recipe",
+    "relevant_ids": ["14", "28", "37", "39", "60", "69", "82"]
+  },
+  {
+    "query": "mozzarella",
+    "relevant_ids": ["26", "32", "51", "55"]
+  },
+  {
+    "query": "avocado",
+    "relevant_ids": ["9", "75", "79"]
+  },
+  {
+    "query": "truffle mushroom",
+    "relevant_ids": ["47"]
+  },
+  {
+    "query": "lamb recipe",
+    "relevant_ids": ["34", "70"]
+  },
+  {
+    "query": "quick vegetarian",
+    "relevant_ids": ["6", "9", "11", "15", "16", "17", "55", "63", "80"]
+  },
+  {
+    "query": "anchovies",
+    "relevant_ids": ["52", "59"]
+  },
+  {
+    "query": "clams shellfish",
+    "relevant_ids": ["53"]
+  },
+  {
+    "query": "wine braise",
+    "relevant_ids": ["3", "28", "34", "41", "50", "67", "73"]
+  },
+  {
+    "query": "rosemary thyme herbs",
+    "relevant_ids": ["14", "28", "31", "41", "57", "82"]
+  },
+  {
+    "query": "no-cook raw preparation",
+    "relevant_ids": ["9", "19", "55", "63", "74", "79"]
+  },
+  {
+    "query": "French cuisine",
+    "relevant_ids": ["3", "11", "67", "73", "77", "78", "82"]
+  },
+  {
+    "query": "Italian classic",
+    "relevant_ids": ["0", "1", "4", "7", "10", "13", "25", "31", "44", "45", "46", "50", "51", "55", "57"]
+  },
+  {
+    "query": "ricotta cheese",
+    "relevant_ids": ["35", "48"]
+  },
+  {
+    "query": "fried food",
+    "relevant_ids": ["0", "12", "26", "51", "82"]
+  },
+  {
+    "query": "vegetable soup",
+    "relevant_ids": ["14", "29", "39", "60", "64", "65", "69", "81"]
+  },
+  {
+    "query": "chocolate dessert",
+    "relevant_ids": ["13", "18", "48", "76"]
+  },
+  {
+    "query": "Asian inspired dish",
+    "relevant_ids": ["8", "27", "61", "64", "71", "72", "75", "79"]
+  }
 ]
