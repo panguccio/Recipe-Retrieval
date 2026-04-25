@@ -10,6 +10,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # Importiamo la classe dal nuovo file search.py
 from search import SearchEngine
 
+weights = {"title": 0.7, "ingredients": 0.4, "instructions" : 0.2}
 def benchmark():
     # 1. INIZIALIZZAZIONE ENGINE
     # La classe carica già tutto (index, vectors, vocab) al suo interno
@@ -17,8 +18,7 @@ def benchmark():
         # Assicurati che i percorsi siano corretti rispetto a dove lanci lo script
         engine = SearchEngine(
             index_path="benchmark/inverted_index.pkl", 
-            doc_vect="benchmark/doc_vectors.pkl"
-        )
+            doc_vect_path="benchmark/doc_vectors.pkl"        )
         
         with open("benchmark/evaluation_set.json", "r") as f:
             test_cases = json.load(f)
@@ -40,9 +40,10 @@ def benchmark():
         # 2. ESECUZIONE RICERCA
         start_time = time.time()
         
-        # Usiamo il metodo della classe. 
-        # Nota: usiamo n=5 o n=len(relevant_ids) a seconda di cosa vuoi testare
-        retrieved_indices, similarities = engine.search(query, n=5)
+        vec_q = engine.query_to_vector(query)
+        
+        # B. Eseguiamo la ricerca passando il vettore
+        retrieved_indices, similarities = engine.search(vec_q, n=5)
         
         elapsed = time.time() - start_time
         
