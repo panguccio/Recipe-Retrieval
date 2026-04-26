@@ -3,18 +3,18 @@ from symspellpy import SymSpell, Verbosity
 from tqdm import tqdm
 from core import tokenize, Term, PostingList
 
+
 class InvertedIndex:
     def __init__(self, corpus):
         self.zones = ["title", "instructions", "ingredients"]
-        self.index = SortedDict()
-        self.vocab = {}
+        self.index = SortedDict()  # term -> PostingList, kept sorted for binary search
+        self.vocab = {}            # term -> position in index, for fast lookup
         self.spell = SymSpell(max_dictionary_edit_distance=3)
         self.populate_index(corpus)
 
-
     def populate_index(self, corpus):
+        # First pass: build posting lists for every (token, zone) pair
         for doc_id in tqdm(corpus, desc="Indexing", unit="doc"):
-            # for each term add 3 terms in the index, one for each zone
             for zone in self.zones:
                 text = corpus[doc_id][zone]
                 for token in tokenize(text):
@@ -23,15 +23,15 @@ class InvertedIndex:
                         self.index[term] = PostingList()
                     self.index[term].add_occurrence(doc_id)
 
-        # calculate the idf for each term at the end
+        # Second pass: compute IDF and populate vocab + spell-checker dictionary
         for position, term in enumerate(self.index):
             posting_list = self.index[term]
             term.update_idf(len(corpus), len(posting_list))
-            # update vocab: to easily obtain the position in the index of a term
             self.vocab[term] = position
             self.spell.create_dictionary_entry(term.word, count=1)
 
     def correct(self, word):
+        #Returns the closest spelling correction, or empty string if none found
         try:
             suggestions = self.spell.lookup(word, Verbosity.CLOSEST, max_edit_distance=2)
             return suggestions[0].term
@@ -39,14 +39,12 @@ class InvertedIndex:
             return ""
 
     def get_postings(self, word, zone=None):
+        #Returns postings for a word in a specific zone, or all zones if none given
         if zone:
             return self.index[Term(word, zone)].list
-        postings = {}
-        for zone in self.zones:
-            postings[zone] = self.index[Term(word, zone)].list
-        return postings
+        return {zone: self.index[Term(word, zone)].list for zone in self.zones}
 
-    def debug_print(self, limit = 10):
+    def debug_print(self, limit=10):
         return {str(term): str(self.index[term]) for term in self.index.keys()[:limit]}
 
     def __repr__(self) -> str:
