@@ -1,8 +1,8 @@
 import numpy as np
 import pickle
-from core.models import Term
+from src.core.models import Term
 from scipy.sparse import csr_array
-from utils.tokenize import tokenize
+from src.utils.tokenize import tokenize
 
 class SearchEngine:
     def __init__(self, index_path, doc_vect_path, weights=None):

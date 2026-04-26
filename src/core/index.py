@@ -1,12 +1,13 @@
 from sortedcontainers import SortedDict
 from symspellpy import SymSpell, Verbosity
 from tqdm import tqdm
-from src.core.core import tokenize, Term, PostingList
+from src.core.models import Term, PostingList
+from src.utils.tokenize import tokenize
 
 
 class InvertedIndex:
-    def __init__(self, corpus):
-        self.zones = ["title", "instructions", "ingredients"]
+    def __init__(self, corpus, zones):
+        self.zones = zones or ["title", "instructions", "ingredients"]
         self.index = SortedDict()  # term -> PostingList, kept sorted for binary search
         self.vocab = {}            # term -> position in index, for fast lookup
         self.spell = SymSpell(max_dictionary_edit_distance=3)

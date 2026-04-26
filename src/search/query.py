@@ -1,7 +1,6 @@
-from src.build.corpus_parser import load_corpus
-from src.search.search import SearchEngine
-# Assumiamo che SearchEngine sia definita in search_engine.py o sopra nello stesso file
-# from search_engine import SearchEngine 
+import yaml
+from src.utils.corpus_parser import load_corpus
+from src.search.engine import SearchEngine
 
 def print_results(top_n_indices, similarities, corpus):
     print("\n--- Top 10 Risultati ---")
@@ -11,10 +10,17 @@ def print_results(top_n_indices, similarities, corpus):
         print(f"ID: {doc_id} | Sim: {similarities[doc_id]:.4f} | Ricetta: {recipe_title}")
 
 if __name__ == "__main__":
+    # Caricamento configurazione
+    with open("config.yaml", "r") as f:
+        config = yaml.safe_load(f)
+
     # Inizializzazione del motore
-    # Nota: i pesi sono gestiti internamente alla classe come abbiamo definito prima
-    engine = SearchEngine("inverted_index.pkl", "doc_vectors.pkl")
-    corpus = load_corpus("recipes/recipes.json")
+    engine = SearchEngine(
+        config['paths']['index_bin'], 
+        config['paths']['vectors_bin'],
+        weights=config['settings']['default_weights']
+    )
+    corpus = load_corpus(config['paths']['corpus']['clean'])
 
     while True:
         query_text = input("\nInserisci una query (o 'q' per uscire): ").strip()
@@ -56,3 +62,5 @@ if __name__ == "__main__":
             else:
                 # Se l'utente preme invio senza scrivere nulla, usciamo dal ciclo feedback
                 break
+
+

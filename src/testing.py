@@ -1,6 +1,6 @@
 import cProfile, pstats
 from src.core.index import InvertedIndex
-from src.build.corpus_parser import load_corpus
+from src.utils.corpus_parser import load_corpus
 
 corpus = load_corpus("recipes/test.json")
 

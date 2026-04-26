@@ -2,10 +2,8 @@ import json
 import numpy as np
 import sys
 import os
-
-# Allow imports from the parent directory (e.g. the search module)
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from search import SearchEngine
+import yaml
+from src.search.engine import SearchEngine
 
 
 def calculate_ap(retrieved_ids, relevant_ids):
@@ -76,18 +74,21 @@ def run_test(engine, test_cases):
 
 
 def benchmark():
+    with open("config.yaml", "r") as f:
+        config = yaml.safe_load(f)
+
     # Initialise the search engine with pre-built index and document vectors
     engine = SearchEngine(
-        index_path="benchmark/inverted_index_test.pkl",
-        doc_vect_path="benchmark/doc_vectors_test.pkl"
+        index_path=config['benchmark']['index_bin'],
+        doc_vect_path=config['benchmark']['vectors_bin']
     )
 
     # Load the evaluation queries and their ground-truth relevant document IDs
-    with open("benchmark/evaluation_set.json", "r") as f:
+    with open(config['benchmark']['evaluation_set'], "r") as f:
         test_cases = json.load(f)
 
     # Load the weight configurations to benchmark
-    with open("benchmark/weights_configs.json", "r") as f:
+    with open(config['benchmark']['weights_configs'], "r") as f:
         config_data = json.load(f)
 
     # Track the best-performing configuration
