@@ -5,7 +5,7 @@ import yaml
 from src.core.index import InvertedIndex
 from scipy.sparse import csr_array
 from sklearn.preprocessing import normalize
-from src.scripts.corpus_parser import load_corpus
+from src.utils.corpus_parser import load_corpus
 
 
 def build_doc_vectors(inverted_index, corpus):
@@ -29,7 +29,7 @@ def build_doc_vectors(inverted_index, corpus):
     vectors = csr_array((data, (rows, cols)), shape=(number_of_docs, number_of_terms))
     return  normalize(vectors, norm='l2', axis=1)
 
-def main():
+def build_index():
     with open("config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
@@ -38,8 +38,7 @@ def main():
 
     print("Building Inverted Index...")
     # Passiamo le zone caricate dal config
-    idx = InvertedIndex(zones=config['settings']['zones'])
-    idx.populate_index(corpus)
+    idx = InvertedIndex(corpus, zones=config['settings']['zones'])
 
     print("Building Document Vectors...")
     doc_vectors = build_doc_vectors(idx, corpus)
@@ -54,6 +53,8 @@ def main():
     with open(vector_path, "wb") as f:
         pickle.dump(doc_vectors, f)
     print(f"Document Vectors saved in '{vector_path}'")
+    
+    return idx, doc_vectors
 
 if __name__ == "__main__":
-    main()
+    build_index()
