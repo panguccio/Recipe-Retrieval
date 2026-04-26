@@ -5,7 +5,8 @@ import yaml
 def load_corpus(path):
     """Loads and returns a JSON file as a Python dict."""
     with open(path, "r") as source_file:
-        return json.load(source_file)
+        data = json.load(source_file)
+    return data
 
 
 def create_recipe_corpus(source_path, destination_path, update=False):
@@ -52,5 +53,5 @@ if __name__ == "__main__":
     with open("config.yaml", "r") as f:
         config = yaml.safe_load(f)
     print("Pre-processing the corpus...")
-    create_recipe_corpus(config["paths"]["raw_corpus"], config["paths"]["corpus"], update=False)
-    print(f"Pre-processing completed. Corpus available at {config["paths"]["corpus"]}")
+    create_recipe_corpus(config["paths"]["corpus"]["raw"], config["paths"]["corpus"]["clean"], update=False)
+    print(f"Pre-processing completed. Corpus available at {config["paths"]["corpus"]["clean"]}")
