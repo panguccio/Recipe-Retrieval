@@ -1,0 +1,202 @@
+[
+  {
+    "query": "salmon",
+    "relevant_ids": ["94"]
+  },
+  {
+    "query": "chicken wings",
+    "relevant_ids": ["11", "37", "41"]
+  },
+  {
+    "query": "risotto",
+    "relevant_ids": ["24", "70"]
+  },
+  {
+    "query": "pasta with tomato sauce",
+    "relevant_ids": ["3", "44", "50", "73"]
+  },
+  {
+    "query": "lobster",
+    "relevant_ids": ["7", "19", "42"]
+  },
+  {
+    "query": "chocolate dessert",
+    "relevant_ids": ["18", "43", "63", "84"]
+  },
+  {
+    "query": "pie",
+    "relevant_ids": ["15", "21", "82", "83"]
+  },
+  {
+    "query": "beans and legumes",
+    "relevant_ids": ["1", "2", "31", "44", "73"]
+  },
+  {
+    "query": "shrimp",
+    "relevant_ids": ["42", "56", "61", "67", "75"]
+  },
+  {
+    "query": "beef steak",
+    "relevant_ids": ["1", "13", "29", "30", "74"]
+  },
+  {
+    "query": "spicy food",
+    "relevant_ids": ["11", "17", "19", "25", "37", "64", "65", "79"]
+  },
+  {
+    "query": "vegetable soup",
+    "relevant_ids": ["10", "25", "29", "64", "72", "73", "98"]
+  },
+  {
+    "query": "pizza",
+    "relevant_ids": ["35", "45", "81", "92"]
+  },
+  {
+    "query": "egg dish omelette",
+    "relevant_ids": ["11", "31", "66", "87"]
+  },
+  {
+    "query": "avocado",
+    "relevant_ids": ["66", "91"]
+  },
+  {
+    "query": "sushi rice rolls",
+    "relevant_ids": ["4", "91"]
+  },
+  {
+    "query": "capers",
+    "relevant_ids": ["31", "32", "88"]
+  },
+  {
+    "query": "lemon",
+    "relevant_ids": ["5", "82", "88", "96", "97"]
+  },
+  {
+    "query": "mushroom",
+    "relevant_ids": ["13", "47", "52", "55", "74", "92"]
+  },
+  {
+    "query": "pork",
+    "relevant_ids": ["52", "58", "64", "78"]
+  },
+  {
+    "query": "coconut",
+    "relevant_ids": ["46", "72", "83"]
+  },
+  {
+    "query": "baked dessert cake",
+    "relevant_ids": ["2", "46", "49", "54", "56", "63", "76", "77", "82", "83", "86", "90", "93", "95"]
+  },
+  {
+    "query": "Asian noodles",
+    "relevant_ids": ["67", "71"]
+  },
+  {
+    "query": "salad",
+    "relevant_ids": ["6", "23", "27", "38", "40", "53", "56", "61", "63", "68", "69", "71", "75"]
+  },
+  {
+    "query": "stuffed vegetables",
+    "relevant_ids": ["8", "35"]
+  },
+  {
+    "query": "saffron rice",
+    "relevant_ids": ["6"]
+  },
+  {
+    "query": "lamb",
+    "relevant_ids": ["33", "65"]
+  },
+  {
+    "query": "potato side dish",
+    "relevant_ids": ["26", "29", "74"]
+  },
+  {
+    "query": "BBQ grilled meat",
+    "relevant_ids": ["17", "30", "41", "64", "65"]
+  },
+  {
+    "query": "dip appetizer",
+    "relevant_ids": ["2", "12", "15", "34"]
+  },
+  {
+    "query": "corn",
+    "relevant_ids": ["70", "79"]
+  },
+  {
+    "query": "bread baked dough",
+    "relevant_ids": ["35", "45", "57", "80", "89", "97"]
+  },
+  {
+    "query": "duck game meat",
+    "relevant_ids": ["14", "55"]
+  },
+  {
+    "query": "seafood fish",
+    "relevant_ids": ["0", "7", "19", "28", "32", "35", "36", "42", "56", "61", "67", "69", "91", "94"]
+  },
+  {
+    "query": "tomato basil",
+    "relevant_ids": ["31", "44", "68", "98"]
+  },
+  {
+    "query": "breakfast",
+    "relevant_ids": ["47", "77", "87", "89", "99"]
+  },
+  {
+    "query": "cheese",
+    "relevant_ids": ["3", "12", "34", "62", "68", "71", "80", "81", "93"]
+  },
+  {
+    "query": "slow braised stew",
+    "relevant_ids": ["1", "14", "29", "67"]
+  },
+  {
+    "query": "sweet potato",
+    "relevant_ids": ["33", "72", "85"]
+  },
+  {
+    "query": "couscous grain",
+    "relevant_ids": ["33", "60", "96"]
+  },
+  {
+    "query": "fruit dessert",
+    "relevant_ids": ["15", "21", "36", "54", "58", "93"]
+  },
+  {
+    "query": "eggplant",
+    "relevant_ids": ["5", "12"]
+  },
+  {
+    "query": "cauliflower",
+    "relevant_ids": ["9", "62"]
+  },
+  {
+    "query": "fennel",
+    "relevant_ids": ["23", "28", "70"]
+  },
+  {
+    "query": "ricotta spinach",
+    "relevant_ids": ["34", "80"]
+  },
+  {
+    "query": "turkey chicken casserole",
+    "relevant_ids": ["16", "25", "41", "48", "85"]
+  },
+  {
+    "query": "ice cream frozen dessert",
+    "relevant_ids": ["57"]
+  },
+  {
+    "query": "nachos chips",
+    "relevant_ids": ["2", "12", "17"]
+  },
+  {
+    "query": "honey sweet glaze",
+    "relevant_ids": ["37", "43", "54", "57", "59"]
+  },
+  {
+    "query": "crab seafood appetizer",
+    "relevant_ids": ["0", "42", "91"]
+  }
+]
