@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Build Index",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.utils.build_index",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Parse Corpus",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.utils.corpus_parser",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Search CLI",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.search.query",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Benchmark",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.benchmark.benchmark",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Testing",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.testing",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

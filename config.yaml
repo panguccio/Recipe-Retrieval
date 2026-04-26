@@ -1,0 +1,24 @@
+paths:
+  corpus:
+    raw: "data/corpus/recipes_raw.json"
+    clean: "data/corpus/recipes.json"
+    test: "data/corpus/test.json"
+    benchmark: "data/corpus/benchmark.json"
+  index_bin: "data/bin/inverted_index.pkl"
+  vectors_bin: "data/bin/doc_vectors.pkl"
+
+benchmark:
+  index_bin: "data/bin/inverted_index_test.pkl"
+  vectors_bin: "data/bin/doc_vectors_test.pkl"
+  evaluation_set: "data/benchmark/evaluation_set.json"
+  weights_configs: "data/benchmark/weights_configs.json"
+
+settings:
+  zones:
+    - "title"
+    - "instructions"
+    - "ingredients"
+  default_weights:
+    title: 0.7
+    instructions: 0.1
+    ingredients: 0.2
