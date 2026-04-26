@@ -66,7 +66,7 @@ def benchmark():
     best_stats = {}
 
     print(f"\n{'CONFIG NAME':<25} | {'P@5':<6} | {'R@5':<6} | {'MAP':<6}")
-    print("-" * 65)
+    print("-" * 55)
 
     for cfg in config_data["configurations"]:
         # Aggiorna pesi
@@ -83,7 +83,7 @@ def benchmark():
             best_config = cfg
             best_stats = {"p": avg_p, "r": avg_r, "map": map_score}
 
-    print("-" * 65)
+    print("-" * 55)
     print(f"\n🏆 VINCITORE: {best_config['name']}")
     print(f"📊 MAP (Mean Average Precision): {best_stats['map']:.4f}")
     print(f"📈 Dettagli: Precision@5: {best_stats['p']:.2f}, Recall@5: {best_stats['r']:.2f}")
