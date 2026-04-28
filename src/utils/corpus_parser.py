@@ -1,6 +1,31 @@
 import json
 import yaml
+import requests, zipfile, io, os
+import shutil
+from pathlib import Path
 
+URL = "https://eightportions.com/recipes_raw.zip"
+RAW_JSON = "recipes_raw_nosource_fn.json"
+
+def download_corpus(url, dir, raw_path):
+    
+    print("Downloading the file...")
+    
+    raw_dir = os.path.join(dir, "raw")
+    r = requests.get(url)
+    z = zipfile.ZipFile(io.BytesIO(r.content))
+    z.extractall(raw_dir)
+    for file in os.listdir(raw_dir):
+        filename = os.fsdecode(file)
+        if filename != RAW_JSON:
+            os.remove(os.path.join(raw_dir, filename))
+    
+    source_file = os.path.join(raw_dir, RAW_JSON)
+    
+    shutil.move(str(source_file), str(raw_path))
+    os.rmdir(raw_dir)
+    
+    print(f"Download completed: saved in {str(raw_path)}")
 
 def load_corpus(path):
     """Loads and returns a JSON file as a Python dict."""
@@ -49,9 +74,21 @@ def create_recipe_corpus(source_path, destination_path, update=False):
         json.dump(recipe_corpus, destination_file, indent=4)
 
 
-if __name__ == "__main__":
+def main():
     with open("config.yaml", "r") as f:
         config = yaml.safe_load(f)
+    
+    DIR = config["corpus"]["dir"]
+    RAW_PATH = config["corpus"]["raw"]
+    CLEAN_PATH = config["corpus"]["clean"]
+    
+    # download_corpus(URL, DIR, RAW_PATH)
+    
     print("Pre-processing the corpus...")
-    create_recipe_corpus(config["paths"]["corpus"]["raw"], config["paths"]["corpus"]["clean"], update=False)
-    print(f"Pre-processing completed. Corpus available at {config["paths"]["corpus"]["clean"]}")
+    create_recipe_corpus(RAW_PATH, CLEAN_PATH, update=False)
+    print(f"Pre-processing completed. Corpus available at {CLEAN_PATH}")
+
+
+if __name__ == "__main__":
+    
+    main()
