@@ -227,5 +227,4 @@ recipes/*.json
 benchmark/doc_vectors_test.pkl
 .gitignore
 benchmark/inverted_index_test.pkl
-data/corpus
-data/bin
+
