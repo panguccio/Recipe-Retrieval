@@ -1,9 +1,11 @@
-paths:
-  corpus:
+corpus:
     raw: "data/corpus/recipes_raw.json"
     clean: "data/corpus/recipes.json"
     test: "data/corpus/test.json"
     benchmark: "data/corpus/benchmark.json"
+    dir: "data/corpus"
+
+paths:
   index_bin: "data/bin/inverted_index.pkl"
   vectors_bin: "data/bin/doc_vectors.pkl"
 

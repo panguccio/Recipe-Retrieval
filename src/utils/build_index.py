@@ -34,7 +34,7 @@ def build_index():
         config = yaml.safe_load(f)
 
     print("Loading corpus...")
-    corpus = load_corpus(config['paths']['corpus']['clean'])
+    corpus = load_corpus(config['corpus']['clean'])
 
     print("Building Inverted Index...")
     # Passiamo le zone caricate dal config
