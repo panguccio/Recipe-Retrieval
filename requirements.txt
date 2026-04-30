@@ -5,3 +5,5 @@ sortedcontainers
 symspellpy
 scikit-learn
 tqdm
+requests
+pyyaml
