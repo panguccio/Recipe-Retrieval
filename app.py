@@ -37,11 +37,16 @@ def home():
 
             for doc_id in top_n_indices:
                 ricetta = corpus.get(str(doc_id), {})
+
+                raw_ingredients = ricetta.get('ingredients', [])
+
+                lista_ingredienti = [line.strip() for line in raw_ingredients.splitlines() if line.strip()]
+
                 risultati_per_html.append({
                     'id': doc_id,
                     'titolo': ricetta.get('title', 'Titolo non trovato'),
                     'score': round(float(similarities[doc_id]), 4),
-                    'ingredienti': ricetta.get('ingredients', []),
+                    'ingredienti': lista_ingredienti,
                     'procedimento': ricetta.get('instructions', [])
                 })
     return render_template('index.html', risultati=risultati_per_html, query=query)
@@ -62,11 +67,16 @@ def handle_feedback():
 
     for doc_id in top_n_indices:
         ricetta = corpus.get(str(doc_id), {})
+        
+        raw_ingredients = ricetta.get('ingredients', [])
+
+        lista_ingredienti = [line.strip() for line in raw_ingredients.splitlines() if line.strip()]
+
         risultati_per_html.append({
             'id': doc_id,
             'titolo': ricetta.get('title', 'Titolo non trovato'),
             'score': round(float(similarities[doc_id]), 4),
-            'ingredienti': ricetta.get('ingredients', []),
+            'ingredienti': lista_ingredienti,
             'procedimento': ricetta.get('instructions', [])
         })
     return render_template('index.html', risultati=risultati_per_html)

@@ -207,27 +207,17 @@
                 <div class="details-content">
                     <h4>Ingredienti:</h4>
                     <ul>
-                        {% if r.ingredienti is string %}
-
-                            <li>{{ r.ingredienti }}</li>
-                        {% else %}
-                            {% for ing in r.ingredienti %}
-                                <li>{{ ing }}</li>
-                            {% endfor %}
-                        {% endif %}
+                        {% for ing in r.ingredienti %}
+                            <li>{{ ing }}</li>
+                        {% endfor %}
                         </ul>
                         <h4>Procedimento:</h4>
                         <p>
-                            {% if r.procedimento is string %}
-                                {{ r.procedimento }}
-                            {% else %}
-                                {{ r.procedimento | join(' ') }}
-                            {% endif %}
+                            {{ r.procedimento }}
                         </p>
                 </div>
             </div>
-                <!-- Parte Feedback -->
-                <div class="feedback-box">
+             <div class="feedback-box">
                     <p style="font-style: italic">feedback</p>
                     <button class="btn-feedback" data-id="{{ r.id }}" onclick="toggleThumb(this); event.stopPropagation()";>👍</button>
                 </div>
