@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">
+    <title>Recipes Search</title>
+    
+    <style>
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Fraunces', serif;
+            background-color: #F8F2E8;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            justify-content: center;
+            
+        }
+
+        .title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.8rem, 7vw, 5.2rem);
+            font-weight: 300; line-height: 1.06; letter-spacing: -.02em;
+        }
+        
+        .search-form {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 15px 20px;
+            font-size: 18px;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4A7C5A; 
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #1E3A2A;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2F5C3F;
+        }
+
+        .btn-rel-feedback{
+            padding: 10px 20px;
+            font-size: 15px;
+            background-color:  #eeab2e;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .btn-rel-feedback:hover {
+            background-color:  #8a631b;
+        }
+
+       .results-container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 100px;
+        }
+
+        .recipe-card {
+            position: relative;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.1s ease;
+            overflow: hidden; 
+            min-height: 120px;
+        }
+
+        .recipe-details {
+            max-height: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease-in-out;
+            background-color: #fff;
+        }
+
+
+        .recipe-card.open {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .recipe-card.open .recipe-details {
+            max-height: 1000px; 
+            opacity: 1;
+            visibility: visible;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #4A7C5A;
+        }
+
+        .details-content h4 {
+            margin: 10px 0 5px 0;
+            color: #1E3A2A;
+        }
+
+        .details-content ul, .details-content p {
+            margin: 5px 0;
+        }
+
+        .feedback-box {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        .btn-feedback {
+            background: none;
+            border: 1px solid #ddd;
+            color: #666;
+            padding: 5px 15px;
+            font-size: 0.9rem;
+            border-radius: 5px;
+        }
+
+        .btn-feedback:hover {
+            background: #f0f0f0;
+        }
+
+        .btn-feedback.active{ background: #d4edda; border-color: #28a745; color: #155724; }
+
+        hr {
+            border: 0;
+            height: 3px;
+            background-color: #4A7C5A; /* Il verde medio del tuo focus */
+            margin: 20px 0;
+            width: 80%;
+            border-radius: 5px;
+        }
+
+        .footer-feedback {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(248, 242, 232, 0.95); 
+            border-top: 2px solid #e0dacc;
+            padding: 15px 20px;
+            text-align: right;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+            z-index: 1000; 
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="title">Recipe Finder</h1>
+        
+        <form action="/" method="POST" class="search-form">
+            <input type="text" 
+                   name="search" 
+                   placeholder="es. Grammie Hamblet's Deviled Crab" 
+                   required>
+            <button type="submit">Search</button>
+        </form>
+ 
+       
+
+        {% if risultati %}
+        <hr class="hr-brand">
+        <div class="results-container">
+            {% for r in risultati %}
+            
+            <div class="recipe-card" onclick="toggleCard(this)">
+                
+            <h3>{{ r.titolo }}</h3>
+            <div class="recipe-details">
+                <div class="details-content">
+                    <h4>Ingredienti:</h4>
+                    <ul>
+                        {% for ing in r.ingredienti %}
+                            <li>{{ ing }}</li>
+                        {% endfor %}
+                        </ul>
+                        <h4>Procedimento:</h4>
+                        <p>
+                            {{ r.procedimento }}
+                        </p>
+                </div>
+            </div>
+             <div class="feedback-box">
+                    <p style="font-style: italic">feedback</p>
+                    <button class="btn-feedback" data-id="{{ r.id }}" onclick="toggleThumb(this); event.stopPropagation()";>👍</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="footer-feedback">
+            <span style="margin-right: 20px; font-style: italic;">
+                Select the recipe:
+            </span>
+            <button class="btn-rel-feedback" onclick="submitAllFeedback()">
+                Send Relevance Feedback
+            </button>
+        </div>
+        {% endif %}
+        <form id="feedback-form" action="/submit-feedback" method="POST" style="display: none;">
+            <input type="hidden" name="feedback_ids" id="input-feedback-ids">
+            <input type="hidden" name="query_testo" id="input-query-testo">
+        </form>
+    </div>
+
+
+    <script>
+
+        function toggleCard(card) {
+            card.classList.toggle('open');
+        }
+
+        function toggleThumb(btn) {
+            btn.classList.toggle('active');
+        }
+        function submitAllFeedback(){
+
+            const activeButtons = document.querySelectorAll('.btn-feedback.active');
+            const ids = Array.from(activeButtons).map(btn => btn.getAttribute('data-id'));
+           
+            if (ids.length === 0) {
+                    alert("Error: Select some recipes");
+                return;
+            }
+            const idString = ids.join(" ");
+            const queryTesto = document.querySelector('input[name="search"]').value;
+
+
+            document.getElementById('input-feedback-ids').value = idString;
+            document.getElementById('input-query-testo').value = queryTesto;
+
+
+            document.getElementById('feedback-form').submit();
+        }
+    </script>
+</body>
+</html>
