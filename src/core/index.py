@@ -45,6 +45,9 @@ class InvertedIndex:
             return self.index[Term(word, zone)].list
         return {zone: self.index[Term(word, zone)].list for zone in self.zones}
 
+    def get_term(self, i):
+        return self.index.keys()[i]
+    
     def debug_print(self, limit=10):
         return {str(term): str(self.index[term]) for term in self.index.keys()[:limit]}
 

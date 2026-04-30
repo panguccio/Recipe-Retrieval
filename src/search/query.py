@@ -9,8 +9,7 @@ def print_results(top_n_indices, similarities, corpus):
         title = corpus.get(str(doc_id), {}).get('title')
         print(f"ID: {doc_id} | Sim: {similarities[doc_id]:.4f} | Recipe: {title}")
 
-
-if __name__ == "__main__":
+def cli_search():
     # Caricamento configurazione
     with open("config.yaml", "r") as f:
         config = yaml.safe_load(f)
@@ -21,7 +20,7 @@ if __name__ == "__main__":
         config['paths']['vectors_bin'],
         weights=config['settings']['default_weights']
     )
-    corpus = load_corpus(config['paths']['corpus']['clean'])
+    corpus = load_corpus(config['corpus']['clean'])
 
     while True:
         query_text = input("\nEnter a query (or 'Enter' to quit): ").strip()
@@ -52,3 +51,6 @@ if __name__ == "__main__":
             vec_q = engine.apply_relevance_feedback(vec_q, relevant_doc_ids, top_n_indices)
             top_n_indices, similarities = engine.search(vec_q, n=10)
             print_results(top_n_indices, similarities, corpus)
+
+if __name__ == "__main__":
+    cli_search()
