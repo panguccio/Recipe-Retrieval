@@ -7,7 +7,9 @@ def print_results(top_n_indices, similarities, corpus):
     print("\n--- Top 10 Results ---")
     for doc_id in top_n_indices:
         title = corpus.get(str(doc_id), {}).get('title')
-        print(f"ID: {doc_id} | Sim: {similarities[doc_id]:.4f} | Recipe: {title}")
+        ingredients = corpus.get(str(doc_id), {}).get('ingredients')
+        instructions = corpus.get(str(doc_id), {}).get('instructions')
+        print(f"ID: {doc_id} | Sim: {similarities[doc_id]:.4f} | Recipe: {title}\n\nIngredients:\n{ingredients}\n\nInstructions: {instructions}\n {"-"*20}")
 
 def cli_search():
     # Caricamento configurazione
