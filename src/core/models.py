@@ -19,7 +19,7 @@ class Term:
         return hash(self.word + self.position)
 
     def __repr__(self):
-        return f"{self.word}.{self.position} (idf:{self.idf})"
+        return f"{self.word}.{self.position}"
 
     # Ordering is word-only so SortedDict keeps terms alphabetically
     def __gt__(self, other):
