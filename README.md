@@ -1,22 +1,46 @@
-# IR-System
-Project for Information Retrieval exam.
+# Recipe Retrieval - An Information Retrieval System
 
-How to run:
-1. clone the repository
-```bash
-git clone https://github.com/panguccio/RecipeRetrieval.git
-cd RecipeRetrieval
+> Explanatory pipeline of the system in `recipe_retrieval.ipynb`
+
+This repository defines an Information Retrieval System that can be used for recipe datasets. Given a phrase query, it will return the recipes that are more relevant in the current dataset, which contains approximately 60 thousands documents.
+
+The recipes, in `.json` format, are pre-processed and then saved as matrixes of **TF-TDF** values, coherently with the Vector Space Model. The words are normalized and saved as an **inverted index**: each term is mapped to a posting list, which contains the document-ids of the recipes containing that term.
+
+The inverted index is built in such a way that each term is formed by the couple `word` and `zone`. This choice was made in order to give much more importance in the retrieval to words contained in titles with respect to the ones in the ingredients and instructions parts.
+
+For the actual retrieval, the `search engine` transforms the queries into vectors and calculates the cosine similarity with the documents vectors. The ones with larger cosine similarity are returned, ordered. The user can also provide a **relevance feedback**, that will transpose the query in the vector space closer to the relevant documents, using the Rocchio algorithm.
+
+To make these calculations efficient, given the large number of documents and terms, the `scipy` sparce arrays were used. This made the cosine similarity calculation trivial and lowered significantly the amount of space needed to save the matrix, because of the large number of 0-values in the vectors.
+
+A test benchmark was also developed to test our system on a subset of recipes, based on automatically generated queries. The system gave strong results and proved its robustness even with original phrase queries.
+
+Developed by: Gabriele Pasqualini, Federico Marenco and Anna Guccione.
+
+
+## Project Structure
+
+```text
+recipe-retrieval/
+├── data/                       
+│   ├── corpus/                 # * corpus of recipes
+│   └── bin/                    # * .pkl of the inverted index and document vectors
+│   └── benchmark/              # * data used for the benchmark evaluation
+├── src/                        
+│   ├── core/                  
+│   │   ├── models.py           # Term, Posting, PostingList classes
+│   │   └── index.py            # InvertedIndex class
+│   ├── search/                 
+│   │   ├── engine.py           # SearchEngine class
+│   │   └── cli.py              # retrieval logic for command line interface
+│   │   └── app.py              # retrieval logic with a webapp
+│   ├── utils/                  
+│   │   ├── tokenizer.py        # tokenizing logic
+│   │   ├── build_index.py      # index construction logic
+│   │   └── corpus_parser.py    # corpus preprocessing logic
+│   ├── benchmark/               
+│   │   └── benchmark.py        # evaluation of the system
+│   └── web/                    # integration with Flask
+├── config.yaml                 # parameters
+├── requirements.txt
+└── README.md
 ```
-2. Install the dependencies
-```bash
-python3 -m pip install -r requirements.txt
-```
-3. Launch `testing.py`
-# Osservaizoni
-    1. Non considerare ingredienti, nella tokenizzazione
-    2. Fare due tokenizzazioni una per titolo una per instruction
-    3. Deciso di sostituire il trattino con uno spazio vuoto
-    4. Togliere tutto che non sia lettere minuscole e maiuscole (Trattini, Numeri, ....)
-    5. Togliere le stop-word con il TF IDF 
-    6. Abbiamo aggiunto una mapatura del pos utilizzando il tagger e il lemmatizzatore di nltk 
-    7. Abbiamo deciso di non ricavarci subito l'IDF ma di calmcolarlo dopo una volta che la posting-list è completa 
