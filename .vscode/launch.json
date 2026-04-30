@@ -22,6 +22,13 @@
       "module": "src.search.query",
       "cwd": "${workspaceFolder}"
     },
+        {
+      "name": "Search GUI",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.search.app",
+      "cwd": "${workspaceFolder}"
+    },
     {
       "name": "Benchmark",
       "type": "debugpy",
