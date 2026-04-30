@@ -21,7 +21,7 @@ if __name__ == "__main__":
         config['paths']['vectors_bin'],
         weights=config['settings']['default_weights']
     )
-    corpus = load_corpus(config['paths']['corpus']['clean'])
+    corpus = load_corpus(config['corpus']['clean'])
 
     while True:
         query_text = input("\nEnter a query (or 'Enter' to quit): ").strip()
