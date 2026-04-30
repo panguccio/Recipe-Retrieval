@@ -37,7 +37,6 @@ def build_index():
     corpus = load_corpus(config['corpus']['clean'])
 
     print("Building Inverted Index...")
-    # Passiamo le zone caricate dal config
     idx = InvertedIndex(corpus, zones=config['settings']['zones'])
 
     print("Building Document Vectors...")
