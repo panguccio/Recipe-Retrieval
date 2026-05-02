@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">
-    <title>Recipes Search</title>
+    <title>Recipe Search</title>
     
     <style>
-
         body, html {
             height: 100%;
             margin: 0;
@@ -22,7 +21,6 @@
             text-align: center;
             min-height: 100vh;
             justify-content: center;
-            
         }
 
         .title {
@@ -108,7 +106,6 @@
             background-color: #fff;
         }
 
-
         .recipe-card.open {
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             transform: translateY(-2px);
@@ -159,7 +156,7 @@
         hr {
             border: 0;
             height: 3px;
-            background-color: #4A7C5A; /* Il verde medio del tuo focus */
+            background-color: #4A7C5A;
             margin: 20px 0;
             width: 80%;
             border-radius: 5px;
@@ -176,8 +173,7 @@
             text-align: right;
             box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
             z-index: 1000; 
-}
-
+        }
     </style>
 </head>
 <body>
@@ -188,37 +184,35 @@
         <form action="/" method="POST" class="search-form">
             <input type="text" 
                    name="search" 
-                   placeholder="es. Grammie Hamblet's Deviled Crab" 
+                   placeholder="e.g. Grammie Hamblet's Deviled Crab" 
                    required>
             <button type="submit">Search</button>
         </form>
  
-       
-
-        {% if risultati %}
+        {% if results %}
         <hr class="hr-brand">
         <div class="results-container">
-            {% for r in risultati %}
+            {% for r in results %}
             
             <div class="recipe-card" onclick="toggleCard(this)">
                 
-            <h3>{{ r.titolo }}</h3>
+            <h3>{{ r.title }}</h3>
             <div class="recipe-details">
                 <div class="details-content">
-                    <h4>Ingredienti:</h4>
+                    <h4>Ingredients:</h4>
                     <ul>
-                        {% for ing in r.ingredienti %}
+                        {% for ing in r.ingredients %}
                             <li>{{ ing }}</li>
                         {% endfor %}
-                        </ul>
-                        <h4>Procedimento:</h4>
-                        <p>
-                            {{ r.procedimento }}
-                        </p>
+                    </ul>
+                    <h4>Instructions:</h4>
+                    <p>
+                        {{ r.instructions }}
+                    </p>
                 </div>
             </div>
              <div class="feedback-box">
-                    <p style="font-style: italic">feedback</p>
+                    <p style="font-style: italic">relevance</p>
                     <button class="btn-feedback" data-id="{{ r.id }}" onclick="toggleThumb(this); event.stopPropagation()";>👍</button>
                 </div>
             </div>
@@ -226,22 +220,22 @@
         </div>
         <div class="footer-feedback">
             <span style="margin-right: 20px; font-style: italic;">
-                Select the recipe:
+                Select relevant recipes:
             </span>
             <button class="btn-rel-feedback" onclick="submitAllFeedback()">
                 Send Relevance Feedback
             </button>
         </div>
         {% endif %}
+
         <form id="feedback-form" action="/submit-feedback" method="POST" style="display: none;">
             <input type="hidden" name="feedback_ids" id="input-feedback-ids">
-            <input type="hidden" name="query_testo" id="input-query-testo">
+            <input type="hidden" name="query_text" id="input-query-text">
         </form>
     </div>
 
 
     <script>
-
         function toggleCard(card) {
             card.classList.toggle('open');
         }
@@ -249,22 +243,20 @@
         function toggleThumb(btn) {
             btn.classList.toggle('active');
         }
-        function submitAllFeedback(){
 
+        function submitAllFeedback(){
             const activeButtons = document.querySelectorAll('.btn-feedback.active');
             const ids = Array.from(activeButtons).map(btn => btn.getAttribute('data-id'));
            
             if (ids.length === 0) {
-                    alert("Error: Select some recipes");
+                alert("Please select at least one recipe.");
                 return;
             }
             const idString = ids.join(" ");
-            const queryTesto = document.querySelector('input[name="search"]').value;
-
+            const queryText = document.querySelector('input[name="search"]').value;
 
             document.getElementById('input-feedback-ids').value = idString;
-            document.getElementById('input-query-testo').value = queryTesto;
-
+            document.getElementById('input-query-text').value = queryText;
 
             document.getElementById('feedback-form').submit();
         }

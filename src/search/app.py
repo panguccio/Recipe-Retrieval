@@ -20,62 +20,62 @@ engine = SearchEngine(
 corpus = load_corpus(config['corpus']['clean'])
 
 top_n_indices = None
-vec_q = None
+query_vec = None
 
 def format_results(similarity):
-    global top_n_indices, vec_q
-    formatted_result = []
+    global top_n_indices, query_vec
+    formatted_results = []
     
     for doc_id in top_n_indices:
-        ricetta = corpus.get(str(doc_id), {})
+        recipe = corpus.get(str(doc_id), {})
         
-        raw_ingredients = ricetta.get('ingredients', [])
+        raw_ingredients = recipe.get('ingredients', [])
 
-        lista_ingredienti = [line.strip() for line in raw_ingredients.splitlines() if line.strip()]
+        ingredients_list = [line.strip() for line in raw_ingredients.splitlines() if line.strip()]
 
-        formatted_result.append({
+        formatted_results.append({
             'id': doc_id,
-            'titolo': ricetta.get('title', 'Titolo non trovato'),
+            'title': recipe.get('title', 'Title not found'),
             'score': round(float(similarity[doc_id]), 4),
-            'ingredienti': lista_ingredienti,
-            'procedimento': ricetta.get('instructions', [])
+            'ingredients': ingredients_list,
+            'instructions': recipe.get('instructions', [])
         })
 
-    return formatted_result
+    return formatted_results
 
 
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    global top_n_indices, vec_q
+    global top_n_indices, query_vec
     query = None
     formatted_results = []
 
     if request.method == 'POST':
         query = request.form.get('search')
         if query:
-            vec_q = engine.query_to_vector(query)
-            top_n_indices, similarities = engine.search(vec_q, n=10)
+            query_vec = engine.query_to_vector(query)
+            top_n_indices, similarities = engine.search(query_vec, n=10)
 
             formatted_results = format_results(similarities)
 
-    return render_template('index.html', risultati=formatted_results, query=query)
+    return render_template('index.html', results=formatted_results, query=query)
         
 @app.route('/submit-feedback', methods=['POST'])
 def handle_feedback():
-    global top_n_indices, vec_q
+    global top_n_indices, query_vec
     
     id_string = request.form.get('feedback_ids', '')
 
     relevant_input = id_string.strip().split()
     relevant_doc_ids = [int(d) for d in relevant_input]
 
-    vec_q = engine.apply_relevance_feedback(vec_q, relevant_doc_ids, top_n_indices)
-    top_n_indices, similarities = engine.search(vec_q, n=10)
+    query_vec = engine.apply_relevance_feedback(query_vec, relevant_doc_ids, top_n_indices)
+    top_n_indices, similarities = engine.search(query_vec, n=10)
 
     formatted_results = format_results(similarities)
 
-    return render_template('index.html', risultati=formatted_results)
+    return render_template('index.html', results=formatted_results)
     
     
 
